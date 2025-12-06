@@ -1,48 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notícias · Argo Tech Brasil</title>
-</head>
-<body>
-  <!-- NAVBAR PADRÃO -->
-  <header class="navbar">
-    <div class="nav-inner">
-      <div class="nav-left">
-        <img src="logo.png" alt="Argo Tech Brasil" class="nav-logo" />
-        <div>
-          <div class="nav-title">Argo Tech Brasil</div>
-          <div class="nav-sub">
-            SaaS · Inteligência Artificial · Automação
-          </div>
-        </div>
-      </div>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Notícias e Tendências · Argo Tech</title>
 
-      <div class="nav-links">
-        <a href="index.html">Início</a>
-        <a href="solucoes.html">Soluções</a>
-        <a href="saas-sob-medida.html">SaaS sob medida</a>
-        <a href="noticias.html">Notícias</a>
-        <a href="#contato">Fale com a gente</a>
-        <a
-          class="nav-whats"
-          href="https://wa.me/5575982784389"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>🟢</span> WhatsApp Business
-        </a>
+  <style>
+    body {
+      font-family: "Inter", Arial;
+      background: #0a0f1c;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 88vh;
+      border-radius: 12px;
+      border: none;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <img src="logo.png" class="nav-logo"/>
+      <div>
+        <div class="nav-title">Argo Tech Brasil</div>
+        <div class="nav-sub">IA · SaaS · Automação</div>
       </div>
     </div>
-  </header>
 
-  <main>
-    <h1>Notícias de tecnologia e IA</h1>
-    <p>
-      Em breve, esta página vai mostrar automaticamente notícias de tecnologia
-      e inteligência artificial e, ao clicar, abrir o site original.
-    </p>
-  </main>
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="solucoes.html">Soluções</a>
+      <a href="saas-sob-medida.html">SaaS sob medida</a>
+      <a href="noticias.html">Notícias</a>
+      <a href="https://wa.me/5575982784389" target="_blank" class="nav-whats">🟢 WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <h1>Notícias e Tendências</h1>
+  <p>As principais novidades de IA, SaaS e tecnologia do mundo.</p>
+
+  <iframe
+    src="https://www.tecmundo.com.br/inteligencia-artificial"
+    title="RSS IA"
+  ></iframe>
+</div>
+
 </body>
 </html>
