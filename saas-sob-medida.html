@@ -1,48 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SaaS sob medida · Argo Tech Brasil</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desenhar SaaS sob Medida - Argo Tech Brasil</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #0b1224;
+    color: #e3e3e3;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 60px auto;
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+  }
+
+  textarea {
+    width: 100%;
+    height: 140px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    border: 1px solid #333;
+    font-size: 16px;
+  }
+
+  button {
+    margin-top: 15px;
+    background: #2ecc71;
+    border: none;
+    padding: 12px 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background: #27ae60;
+  }
+
+  .output {
+    margin-top: 20px;
+    padding: 15px;
+    white-space: pre-wrap;
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    border-left: 4px solid #2ecc71;
+    color: #d8ffd9;
+    display: none;
+  }
+
+  .loading {
+    display: none;
+    margin-top: 15px;
+    font-style: italic;
+    color: #90ee90;
+  }
+</style>
 </head>
+
 <body>
-  <!-- NAVBAR PADRÃO (mesmo que acima) -->
-  <header class="navbar">
-    <div class="nav-inner">
-      <div class="nav-left">
-        <img src="logo.png" alt="Argo Tech Brasil" class="nav-logo" />
-        <div>
-          <div class="nav-title">Argo Tech Brasil</div>
-          <div class="nav-sub">
-            SaaS · Inteligência Artificial · Automação
-          </div>
-        </div>
-      </div>
 
-      <div class="nav-links">
-        <a href="index.html">Início</a>
-        <a href="solucoes.html">Soluções</a>
-        <a href="saas-sob-medida.html">SaaS sob medida</a>
-        <a href="noticias.html">Notícias</a>
-        <a href="#contato">Fale com a gente</a>
-        <a
-          class="nav-whats"
-          href="https://wa.me/5575982784389"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>🟢</span> WhatsApp Business
-        </a>
-      </div>
-    </div>
-  </header>
+<div class="container">
+  <h2>Desenhar SaaS Sob Medida</h2>
+  <p>Descreva o sistema que você deseja e nossa IA cria um estudo técnico para você.</p>
 
-  <main>
-    <h1>SaaS sob medida com IA</h1>
-    <p>
-      Aqui será o Studio onde o cliente descreve a necessidade, a IA gera o roteiro
-      e mostra uma prévia visual do SaaS. Vamos ligar isso à API depois.
-    </p>
-  </main>
+  <textarea id="descricao" placeholder="Ex.: Sistema para controle de frotas, acompanhamento de veículos, relatórios e alertas..."></textarea>
+  
+  <button onclick="gerar()">Gerar Roteiro Inteligente</button>
+
+  <div class="loading" id="loading">⏳ Gerando análise inteligente...</div>
+
+  <div class="output" id="resultado"></div>
+</div>
+
+<script>
+async function gerar() {
+  const descricao = document.getElementById("descricao").value;
+  const loading = document.getElementById("loading");
+  const resultado = document.getElementById("resultado");
+
+  if (!descricao.trim()) {
+    alert("Por favor, descreva a necessidade.");
+    return;
+  }
+
+  loading.style.display = "block";
+  resultado.style.display = "none";
+  resultado.innerHTML = "";
+
+  try {
+    const response = await fetch("https://summer-leaf-7561.rafargolo.workers.dev", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ descricao })
+    });
+
+    const data = await response.json();
+
+    resultado.style.display = "block";
+    resultado.innerHTML = data.output ?? "Não foi possível gerar resposta.";
+    
+  } catch (err) {
+    resultado.style.display = "block";
+    resultado.innerHTML = "Erro ao processar requisição.";
+  } finally {
+    loading.style.display = "none";
+  }
+}
+</script>
+
 </body>
 </html>
