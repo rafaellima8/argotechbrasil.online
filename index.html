@@ -27,6 +27,92 @@
         sans-serif;
       background: radial-gradient(circle at top, #0f172a 0, #020617 55%);
       color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* SPLASH / ANIMAÇÃO INICIAL */
+
+    .splash {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #0f172a, #020617 70%);
+      z-index: 50;
+      animation: splash-fade 1.6s ease 1.4s forwards;
+    }
+
+    .splash-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .splash-logo-wrap {
+      padding: 18px;
+      border-radius: 28px;
+      background: radial-gradient(circle at top, #0ea5e9, #0f172a);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 1);
+      animation: logo-pop 1.3s ease forwards;
+    }
+
+    .splash-logo {
+      width: 220px;
+      max-width: 70vw;
+      border-radius: 18px;
+    }
+
+    .splash-text {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @keyframes logo-pop {
+      0% {
+        transform: scale(0.7) translateY(18px);
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(15, 23, 42, 0);
+      }
+      40% {
+        transform: scale(1.03) translateY(0);
+        opacity: 1;
+      }
+      70% {
+        transform: scale(0.98);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 26px 80px rgba(15, 23, 42, 1);
+      }
+    }
+
+    @keyframes splash-fade {
+      to {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+      }
+    }
+
+    @keyframes app-fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .app {
+      opacity: 0;
+      animation: app-fade-in 0.9s ease 1.2s forwards;
     }
 
     /* NAVBAR */
@@ -270,7 +356,7 @@
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 18px;
     }
 
@@ -287,14 +373,9 @@
       padding: 3px 9px;
       font-size: 0.72rem;
       border-radius: 999px;
-      background: rgba(30, 64, 175, 0.3);
-      color: #bfdbfe;
+      background: rgba(34, 197, 94, 0.18);
+      color: #bbf7d0;
       margin-bottom: 8px;
-    }
-
-    .tag-soon {
-      background: rgba(251, 191, 36, 0.18);
-      color: #facc15;
     }
 
     .card h2 {
@@ -309,6 +390,14 @@
       margin: 0 0 10px;
     }
 
+    .card ul {
+      margin: 0 0 12px 18px;
+      padding: 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+
     .card a.btn {
       display: inline-flex;
       align-items: center;
@@ -316,17 +405,12 @@
       gap: 6px;
       padding: 9px 14px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text);
+      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+      border: none;
+      color: #020617;
       font-size: 0.84rem;
       text-decoration: none;
-    }
-
-    .card a.btn.primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-      color: #020617;
-      border: none;
+      font-weight: 600;
     }
 
     /* CONTATO */
@@ -416,178 +500,185 @@
   </style>
 </head>
 <body>
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-inner">
-      <div class="nav-left">
-        <img src="logo.png" alt="Argo Tech Brasil" class="nav-logo" />
-        <div>
-          <div class="nav-title">Argo Tech Brasil</div>
-          <div class="nav-sub">SaaS · Inteligência Artificial · Automação</div>
-        </div>
+  <!-- ANIMAÇÃO INICIAL -->
+  <div class="splash">
+    <div class="splash-inner">
+      <div class="splash-logo-wrap">
+        <img src="logo.png" alt="Argo Tech Brasil" class="splash-logo" />
       </div>
-
-      <div class="nav-links">
-        <a href="#solucoes">Soluções</a>
-        <a href="#contato">Fale com a gente</a>
-        <a
-          class="nav-whats"
-          href="https://wa.me/5575982784389"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>🟢</span> WhatsApp Business
-        </a>
-      </div>
+      <div class="splash-text">Inteligência artificial aplicada à gestão</div>
     </div>
-  </header>
+  </div>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero">
-      <div>
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          Plataformas SaaS focadas em gestão pública
-        </div>
-        <h1 class="hero-title">
-          Inteligência e automação a serviço da
-          <span>gestão municipal</span>.
-        </h1>
-        <p class="hero-text">
-          A Argo Tech Brasil desenvolve soluções SaaS com inteligência
-          artificial para saúde, contratações públicas e prestação de contas.
-          Tecnologia pensada para o dia a dia das prefeituras e equipes
-          técnicas.
-        </p>
-
-        <div class="hero-pills">
-          <div class="hero-pill">SaaS para prefeituras</div>
-          <div class="hero-pill">IA preditiva em compras</div>
-          <div class="hero-pill">Gestão em saúde</div>
-          <div class="hero-pill">Dashboards e relatórios</div>
-        </div>
-
-        <div class="hero-cta">
-          <a href="#solucoes" class="hero-btn-primary">
-            Ver soluções SaaS
-          </a>
-          <a href="#contato" class="hero-btn-secondary">
-            Falar com a Argo Tech
-          </a>
-        </div>
-
-        <div class="hero-note">
-          CNPJ 63.246.817/0001-64 · Cardeal da Silva – BA
-        </div>
-      </div>
-
-      <div class="hero-logo-wrap">
-        <div class="hero-logo-card">
-          <img src="logo.png" alt="Logo Argo Tech Brasil" />
-        </div>
-      </div>
-    </section>
-
-    <!-- SOLUÇÕES -->
-    <section id="solucoes" class="section">
-      <div class="section-header">
-        <div>
-          <div class="section-title">Soluções Argo Tech Brasil</div>
-          <div class="section-sub">
-            Plataformas em evolução contínua, pensadas para equipes enxutas que
-            precisam entregar resultado.
-          </div>
-        </div>
-      </div>
-
-      <div class="cards">
-        <article class="card">
-          <div class="tag">Saúde pública</div>
-          <h2>SaúdeCardeal</h2>
-          <p>
-            Plataforma de gestão em saúde com inteligência artificial para
-            acompanhamento de atendimentos, relatórios e indicadores
-            estratégicos da secretaria municipal.
-          </p>
-          <a
-            class="btn primary"
-            href="https://saude.argotechbrasil.online/login"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Acessar sistema
-          </a>
-        </article>
-
-        <article class="card">
-          <div class="tag tag-soon">Em desenvolvimento</div>
-          <h2>SICAG 3.0</h2>
-          <p>
-            Sistema de Inteligência em Contratações e Análise de Gastos com IA,
-            integrado a dados públicos para apoiar planejamento, pesquisas de
-            preço e fiscalização de contratos.
-          </p>
-          <a class="btn" href="#" aria-disabled="true">
-            Saiba mais em breve
-          </a>
-        </article>
-
-        <article class="card">
-          <div class="tag">Consultoria e projetos</div>
-          <h2>Projetos sob medida</h2>
-          <p>
-            Desenvolvimento de soluções específicas em SaaS, automação de
-            rotinas, análise preditiva e integração com sistemas legados para
-            prefeituras e empresas.
-          </p>
-          <a class="btn" href="mailto:rafargolo@gmail.com">
-            Enviar e-mail
-          </a>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTATO -->
-    <section id="contato" class="section">
-      <div class="section-header">
-        <div>
-          <div class="section-title">Fale com a gente</div>
-          <div class="section-sub">
-            Vamos conversar sobre o cenário da sua prefeitura ou organização e
-            desenhar a melhor combinação de soluções.
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-card">
-        <div class="contact-text">
-          <div class="contact-main">
-            Atendimento direto com a Argo Tech Brasil
-          </div>
+  <div class="app">
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="nav-inner">
+        <div class="nav-left">
+          <img src="logo.png" alt="Argo Tech Brasil" class="nav-logo" />
           <div>
-            De segunda a sexta, em horário comercial. Mensagens enviadas fora
-            do horário são retornadas na primeira oportunidade.
+            <div class="nav-title">Argo Tech Brasil</div>
+            <div class="nav-sub">
+              SaaS · Inteligência Artificial · Automação
+            </div>
           </div>
         </div>
 
-        <div>
+        <div class="nav-links">
+          <a href="#solucoes">Soluções</a>
+          <a href="#contato">Fale com a gente</a>
           <a
-            class="contact-whats"
+            class="nav-whats"
             href="https://wa.me/5575982784389"
             target="_blank"
             rel="noopener noreferrer"
           >
-            💬 Falar pelo WhatsApp
-            <small>+55 (75) 98278-4389</small>
+            <span>🟢</span> WhatsApp Business
           </a>
         </div>
       </div>
-    </section>
-  </main>
+    </header>
 
-  <footer>
-    © 2025 Argo Tech Brasil · CNPJ 63.246.817/0001-64 · Cardeal da Silva – BA
-  </footer>
+    <!-- HERO -->
+    <main>
+      <section class="hero">
+        <div>
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Plataformas SaaS para gestão pública e privada
+          </div>
+          <h1 class="hero-title">
+            Gestão com <span>inteligência artificial</span> para quem precisa
+            entregar resultado.
+          </h1>
+          <p class="hero-text">
+            A Argo Tech Brasil desenvolve soluções SaaS com IA para apoiar
+            decisões diárias de gestão, automatizar rotinas e transformar dados
+            em indicadores acionáveis – começando pela saúde municipal.
+          </p>
+
+          <div class="hero-pills">
+            <div class="hero-pill">Gestão pública e privada</div>
+            <div class="hero-pill">IA aplicada ao dia a dia</div>
+            <div class="hero-pill">Dashboards e automações</div>
+            <div class="hero-pill">Foco em prefeituras</div>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#solucoes" class="hero-btn-primary">
+              Ver solução ArgoSaude
+            </a>
+            <a href="#contato" class="hero-btn-secondary">
+              Falar com a Argo Tech
+            </a>
+          </div>
+
+          <div class="hero-note">
+            CNPJ 63.246.817/0001-64 · Cardeal da Silva – BA
+          </div>
+        </div>
+
+        <div class="hero-logo-wrap">
+          <div class="hero-logo-card">
+            <img src="logo.png" alt="Logo Argo Tech Brasil" />
+          </div>
+        </div>
+      </section>
+
+      <!-- SOLUÇÕES -->
+      <section id="solucoes" class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Solução ArgoSaude</div>
+            <div class="section-sub">
+              Sistema de gestão em saúde municipal com foco em eficiência,
+              conformidade e dados confiáveis para tomada de decisão.
+            </div>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="tag">SaaS · Gestão em Saúde Municipal</div>
+            <h2>ArgoSaude — Sistema de Gestão em Saúde Municipal</h2>
+            <p>
+              ArgoSaude (v2.0.0) é um sistema de gestão em saúde desenvolvido
+              pela Argo Tech Brasil para apoiar secretarias municipais na
+              organização de atendimentos, estoques, transporte de pacientes e
+              vigilância em saúde, com forte uso de automações e dados.
+            </p>
+            <ul>
+              <li>Cadastro de pacientes e unidades de saúde.</li>
+              <li>
+                Prescrição eletrônica integrada ao catálogo RENAME e Portaria
+                344/98.
+              </li>
+              <li>
+                Módulos de Farmácia, Estoque, Fraldas e Assistência Social.
+              </li>
+              <li>
+                TFD (Transporte Fora do Domicílio) alinhado às normas do SUS.
+              </li>
+              <li>
+                SINAN com templates prontos para agravos de notificação
+                compulsória.
+              </li>
+              <li>Relatórios estratégicos, indicadores e automações.</li>
+            </ul>
+            <a
+              class="btn"
+              href="https://saude.argotechbrasil.online/login"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Acessar ArgoSaude
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTATO -->
+      <section id="contato" class="section">
+        <div class="section-header">
+          <div>
+            <div class="section-title">Fale com a gente</div>
+            <div class="section-sub">
+              Vamos entender a realidade da sua prefeitura ou organização e
+              desenhar juntos a melhor forma de aplicar IA na sua gestão.
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-text">
+            <div class="contact-main">
+              Atendimento direto com a Argo Tech Brasil
+            </div>
+            <div>
+              Atendemos por WhatsApp Business para agilizar a comunicação com
+              gestores, técnicos e equipes de TI. Envie uma mensagem e
+              combinamos uma apresentação guiada do ArgoSaude.
+            </div>
+          </div>
+
+          <div>
+            <a
+              class="contact-whats"
+              href="https://wa.me/5575982784389"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              💬 Falar pelo WhatsApp
+              <small>+55 (75) 98278-4389</small>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2025 Argo Tech Brasil · CNPJ 63.246.817/0001-64 · Cardeal da Silva – BA
+    </footer>
+  </div>
 </body>
 </html>
