@@ -3,146 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Argo Tech Brasil - Soluções SaaS e Inteligência Artificial</title>
+  <title>Argo Tech Brasil · SaaS + Inteligência Artificial</title>
 
   <style>
-    :root {
-      --bg: #020617;
-      --card: #020617;
-      --accent: #22c55e;
-      --accent-soft: #16a34a;
-      --border: #1e293b;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-    }
-
+    /* ---------- RESET ---------- */
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0, #020617 55%);
-      color: var(--text);
+      font-family: "Inter", Arial, sans-serif;
+      background: linear-gradient(180deg, #0a0f1c, #091222, #03050b);
+      color: #eef;
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    /* SPLASH / ANIMAÇÃO INICIAL */
-
-    .splash {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #0f172a, #020617 70%);
-      z-index: 50;
-      animation: splash-fade 1.6s ease 1.4s forwards;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    .splash-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+    /* ---------- ANIMAÇÃO DE ENTRADA ---------- */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 1.2s ease forwards;
     }
 
-    .splash-logo-wrap {
-      padding: 18px;
-      border-radius: 28px;
-      background: radial-gradient(circle at top, #0ea5e9, #0f172a);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: 0 30px 80px rgba(15, 23, 42, 1);
-      animation: logo-pop 1.3s ease forwards;
-    }
-
-    .splash-logo {
-      width: 220px;
-      max-width: 70vw;
-      border-radius: 18px;
-    }
-
-    .splash-text {
-      font-size: 0.8rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    @keyframes logo-pop {
-      0% {
-        transform: scale(0.7) translateY(18px);
-        opacity: 0;
-        box-shadow: 0 0 0 rgba(15, 23, 42, 0);
-      }
-      40% {
-        transform: scale(1.03) translateY(0);
-        opacity: 1;
-      }
-      70% {
-        transform: scale(0.98);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 26px 80px rgba(15, 23, 42, 1);
-      }
-    }
-
-    @keyframes splash-fade {
-      to {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden;
-      }
-    }
-
-    @keyframes app-fade-in {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
+    @keyframes fadeIn {
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    .app {
-      opacity: 0;
-      animation: app-fade-in 0.9s ease 1.2s forwards;
-    }
-
-    /* NAVBAR */
-
+    /* ---------- NAVBAR ---------- */
     .navbar {
-      <div class="nav-links">
-  <a href="index.html">Início</a>
-  <a href="solucoes.html">Soluções</a>
-  <a href="saas-sob-medida.html">SaaS sob medida</a>
-  <a href="noticias.html">Notícias</a>
-  <a href="#contato">Fale com a gente</a>
-  <a
-    class="nav-whats"
-    href="https://wa.me/5575982784389"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <span>🟢</span> WhatsApp Business
-  </a>
-</div>
-
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(10, 15, 28, 0.9);
+      border-bottom: 1px solid rgba(60, 90, 160, 0.3);
+      padding: 12px 0;
     }
 
     .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 10px 18px;
+      max-width: 1150px;
+      margin: auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      padding: 0 16px;
     }
 
     .nav-left {
@@ -153,958 +68,166 @@
 
     .nav-logo {
       height: 42px;
-      border-radius: 10px;
     }
 
     .nav-title {
+      font-size: 19px;
       font-weight: 600;
-      letter-spacing: 0.03em;
-      font-size: 0.95rem;
     }
 
     .nav-sub {
-      font-size: 0.78rem;
-      color: var(--muted);
+      font-size: 12px;
+      opacity: 0.7;
     }
 
     .nav-links {
       display: flex;
-      gap: 14px;
-      align-items: center;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      padding: 6px 10px;
-      border-radius: 999px;
-      transition: 0.18s ease;
+      gap: 18px;
+      font-size: 14px;
     }
 
     .nav-links a:hover {
-      color: var(--text);
-      background: rgba(15, 23, 42, 0.8);
+      color: #6df;
     }
 
     .nav-whats {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(34, 197, 94, 0.4);
-      background: radial-gradient(circle at top left, #22c55e33, #0f172a);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
+      padding: 6px 12px;
+      background: rgba(0, 170, 0, 0.15);
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 0, 0.15);
+      font-size: 13px;
     }
 
-    .nav-whats span {
-      font-size: 1.05rem;
-    }
-
-    /* HERO */
-
+    /* ---------- HERO ---------- */
     .hero {
-      max-width: 1120px;
-      margin: 40px auto 10px;
-      padding: 0 18px;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
-      gap: 32px;
-      align-items: center;
-    }
-
-    .hero-logo-wrap {
+      max-width: 1150px;
+      margin: auto;
+      padding: 80px 20px 40px;
       display: flex;
-      justify-content: center;
-    }
-
-    .hero-logo-card {
-      background: radial-gradient(circle at top, #0ea5e9, #0f172a);
-      border-radius: 26px;
-      padding: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: 0 24px 80px rgba(15, 23, 42, 0.9);
-    }
-
-    .hero-logo-card img {
-      display: block;
-      max-width: 260px;
-      width: 100%;
-      border-radius: 18px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      padding: 5px 12px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-bottom: 10px;
+      gap: 40px;
     }
 
-    .hero-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 12px #22c55e;
-    }
-
-    .hero-title {
-      font-size: clamp(1.9rem, 4vw, 2.4rem);
-      line-height: 1.15;
-      margin: 0 0 14px;
-    }
-
-    .hero-title span {
-      color: #22c55e;
-    }
-
-    .hero-text {
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 0.96rem;
-      line-height: 1.6;
-      max-width: 480px;
-    }
-
-    .hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .hero-left h1 {
+      font-size: 2.6rem;
+      line-height: 1.25;
       margin-bottom: 18px;
     }
 
-    .hero-pill {
-      font-size: 0.78rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.9);
+    .hero-left p {
+      font-size: 1.04rem;
+      opacity: 0.85;
+      margin-bottom: 22px;
     }
 
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
+    .hero-img img {
+      width: 340px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 20px;
+      box-shadow: 0 0 18px rgba(40, 200, 255, 0.25);
+      animation: logoIntro 1.6s cubic-bezier(.17,.67,.47,1.42) both;
     }
 
-    .hero-btn-primary {
-      padding: 11px 18px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-      color: #020617;
+    @keyframes logoIntro {
+      0% { opacity: 0; transform: scale(.6) rotate(-8deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
       font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 14px 40px rgba(34, 197, 94, 0.6);
+      border: 1px solid transparent;
+      font-size: .96rem;
+      margin-right: 10px;
     }
 
-    .hero-btn-secondary {
-      padding: 9px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.85rem;
-      cursor: pointer;
-      text-decoration: none;
+    .btn-primary {
+      background: #00a86b;
+      color: #fff;
     }
 
-    .hero-note {
-      margin-top: 12px;
-      font-size: 0.78rem;
-      color: var(--muted);
+    .btn-primary:hover {
+      background: #00c97f;
     }
 
-    /* SEÇÕES GERAIS */
-
-    .section {
-      max-width: 1120px;
-      margin: 40px auto 0;
-      padding: 0 18px 10px;
+    .btn-outline {
+      border-color: #66e;
+      color: #66e;
     }
 
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .section-sub {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    /* SOLUÇÃO ARGOSAUDE */
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: radial-gradient(circle at top left, #0f172a, #020617);
-      border-radius: 20px;
-      padding: 18px;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.9);
-    }
-
-    .tag {
-      display: inline-flex;
-      padding: 3px 9px;
-      font-size: 0.72rem;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.18);
-      color: #bbf7d0;
-      margin-bottom: 8px;
-    }
-
-    .card h2 {
-      font-size: 1.05rem;
-      margin: 0 0 6px;
-    }
-
-    .card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.5;
-      margin: 0 0 10px;
-    }
-
-    .card ul {
-      margin: 0 0 12px 18px;
-      padding: 0;
-      color: var(--muted);
-      font-size: 0.82rem;
-      line-height: 1.4;
-    }
-
-    .card a.btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-      border: none;
-      color: #020617;
-      font-size: 0.84rem;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    /* NOTÍCIAS */
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-    }
-
-    .news-card {
-      background: #020617;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      padding: 14px 16px;
-    }
-
-    .news-tag {
-      font-size: 0.72rem;
-      color: #93c5fd;
-      margin-bottom: 4px;
-    }
-
-    .news-title {
-      font-size: 0.9rem;
-      margin-bottom: 6px;
-    }
-
-    .news-desc {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .news-meta {
-      font-size: 0.74rem;
-      color: var(--muted);
-    }
-
-    /* STUDIO DE SAAS SOB MEDIDA */
-
-    .studio-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.6fr);
-      gap: 20px;
-    }
-
-    .studio-box {
-      background: #020617;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      padding: 16px 18px;
-    }
-
-    .studio-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .studio-input,
-    .studio-select,
-    .studio-textarea {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: #020617;
-      color: var(--text);
-      padding: 8px 10px;
-      font-size: 0.85rem;
-      margin-bottom: 10px;
-      font-family: inherit;
-    }
-
-    .studio-textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .studio-btn {
-      padding: 9px 16px;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-      color: #020617;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-
-    .studio-hint {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    .studio-output-title {
-      font-size: 0.96rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .studio-output-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .studio-preview {
-      border-radius: 14px;
-      border: 1px dashed var(--border);
-      padding: 12px;
-      margin-top: 10px;
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .studio-saas-list {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
-    .studio-budget-btn {
-      margin-top: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: #22c55e;
-      color: #020617;
-      font-weight: 600;
-      font-size: 0.85rem;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* CONTATO */
-
-    .contact-card {
-      margin-top: 20px;
-      background: radial-gradient(circle at top left, #22c55e22, #020617);
-      border-radius: 20px;
-      padding: 20px;
-      border: 1px solid rgba(34, 197, 94, 0.5);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .contact-text {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 520px;
-    }
-
-    .contact-main {
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 6px;
-      font-weight: 500;
-    }
-
-    .contact-whats {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 16px;
-      border-radius: 999px;
-      background: #22c55e;
-      color: #020617;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      box-shadow: 0 16px 40px rgba(34, 197, 94, 0.7);
-    }
-
-    .contact-whats small {
-      font-size: 0.78rem;
-      opacity: 0.9;
+    .btn-outline:hover {
+      background: rgba(100, 100, 255, 0.1);
     }
 
     footer {
-      margin-top: 40px;
-      padding: 18px;
+      padding: 35px 20px;
       text-align: center;
-      font-size: 0.78rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-      background: rgba(2, 6, 23, 0.96);
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        margin-top: 24px;
-      }
-
-      .hero-logo-card img {
-        max-width: 220px;
-        margin: 0 auto;
-      }
-
-      .nav-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        width: 100%;
-        justify-content: flex-end;
-        flex-wrap: wrap;
-      }
-
-      .studio-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .contact-card {
-        align-items: flex-start;
-      }
+      opacity: 0.65;
+      font-size: 0.85rem;
+      background: rgba(10, 15, 28, 0.6);
+      margin-top: 60px;
     }
   </style>
 </head>
+
 <body>
-  <!-- ANIMAÇÃO INICIAL -->
-  <div class="splash">
-    <div class="splash-inner">
-      <div class="splash-logo-wrap">
-        <img src="logo.png" alt="Argo Tech Brasil" class="splash-logo" />
+
+  <!-- NAVBAR -->
+  <header class="navbar fade-in">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <img src="logo.png" class="nav-logo" alt="Logo ArgoTech" />
+        <div>
+          <div class="nav-title">Argo Tech Brasil</div>
+          <div class="nav-sub">SaaS · Inteligência Artificial · Automação</div>
+        </div>
       </div>
-      <div class="splash-text">Inteligência artificial aplicada à gestão</div>
+
+      <div class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="solucoes.html">Soluções</a>
+        <a href="saas-sob-medida.html">SaaS sob medida</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="#contato">Fale com a gente</a>
+
+        <a class="nav-whats"
+           href="https://wa.me/5575982784389"
+           target="_blank"
+           rel="noopener noreferrer">
+          🟢 WhatsApp Business
+        </a>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <div class="app">
-    <!-- NAVBAR -->
-    <header class="navbar">
-      <div class="nav-inner">
-        <div class="nav-left">
-          <img src="logo.png" alt="Argo Tech Brasil" class="nav-logo" />
-          <div>
-            <div class="nav-title">Argo Tech Brasil</div>
-            <div class="nav-sub">
-              SaaS · Inteligência Artificial · Automação
-            </div>
-          </div>
-        </div>
+  <!-- HERO -->
+  <section class="hero fade-in">
+    <div class="hero-left">
+      <h1>Gestão com <span style="color:#00df76">inteligência artificial</span> para quem precisa entregar resultado.</h1>
+      <p>
+        Desenvolvemos soluções SaaS com IA para modernizar a gestão pública e privada,
+        automatizar rotinas e transformar dados em resultados que importam.
+      </p>
 
-        <div class="nav-links">
-          <a href="#solucoes">Soluções</a>
-          <a href="#studio">SaaS sob medida</a>
-          <a href="#noticias">Notícias</a>
-          <a href="#contato">Fale com a gente</a>
-          <a
-            class="nav-whats"
-            href="https://wa.me/5575982784389"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>🟢</span> WhatsApp Business
-          </a>
-        </div>
+      <div>
+        <a class="btn btn-primary" href="solucoes.html">Ver solução ArgoSaude</a>
+        <a class="btn btn-outline" href="saas-sob-medida.html">Desenhar um SaaS sob medida</a>
       </div>
-    </header>
+    </div>
 
-    <!-- HERO -->
-    <main>
-      <section class="hero">
-        <div>
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            Plataformas SaaS para gestão pública e privada
-          </div>
-          <h1 class="hero-title">
-            Gestão com <span>inteligência artificial</span> para quem precisa
-            entregar resultado.
-          </h1>
-          <p class="hero-text">
-            A Argo Tech Brasil desenvolve soluções SaaS com IA para apoiar
-            decisões diárias de gestão, automatizar rotinas e transformar dados
-            em indicadores acionáveis – começando pela saúde municipal.
-          </p>
+    <div class="hero-img">
+      <img src="logo.png" alt="Logo animada" />
+    </div>
+  </section>
 
-          <div class="hero-pills">
-            <div class="hero-pill">Gestão pública e privada</div>
-            <div class="hero-pill">IA aplicada ao dia a dia</div>
-            <div class="hero-pill">Dashboards e automações</div>
-            <div class="hero-pill">Foco em prefeituras</div>
-          </div>
+  <footer>
+    © 2025 Argo Tech Brasil – CNPJ 63.246.817/0001-64 – Cardeal da Silva – BA
+  </footer>
 
-          <div class="hero-cta">
-            <a href="#solucoes" class="hero-btn-primary">
-              Ver solução ArgoSaude
-            </a>
-            <a href="#studio" class="hero-btn-secondary">
-              Desenhar um SaaS sob medida
-            </a>
-          </div>
-
-          <div class="hero-note">
-            CNPJ 63.246.817/0001-64 · Cardeal da Silva – BA
-          </div>
-        </div>
-
-        <div class="hero-logo-wrap">
-          <div class="hero-logo-card">
-            <img src="logo.png" alt="Logo Argo Tech Brasil" />
-          </div>
-        </div>
-      </section>
-
-      <!-- SOLUÇÃO ARGOSAUDE -->
-      <section id="solucoes" class="section">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Solução ArgoSaude</div>
-            <div class="section-sub">
-              Sistema de gestão em saúde municipal com foco em eficiência,
-              conformidade e dados confiáveis para tomada de decisão.
-            </div>
-          </div>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="tag">SaaS · Gestão em Saúde Municipal</div>
-            <h2>ArgoSaude — Sistema de Gestão em Saúde Municipal</h2>
-            <p>
-              ArgoSaude (v2.0.0) é um sistema de gestão em saúde desenvolvido
-              pela Argo Tech Brasil para apoiar secretarias municipais na
-              organização de atendimentos, estoques, transporte de pacientes e
-              vigilância em saúde, com forte uso de automações e dados.
-            </p>
-            <ul>
-              <li>Cadastro de pacientes e unidades de saúde.</li>
-              <li>
-                Prescrição eletrônica integrada ao catálogo RENAME e Portaria
-                344/98.
-              </li>
-              <li>
-                Módulos de Farmácia, Estoque, Fraldas e Assistência Social.
-              </li>
-              <li>
-                TFD (Transporte Fora do Domicílio) alinhado às normas do SUS.
-              </li>
-              <li>
-                SINAN com templates prontos para agravos de notificação
-                compulsória.
-              </li>
-              <li>Relatórios estratégicos, indicadores e automações.</li>
-            </ul>
-            <a
-              class="btn"
-              href="https://saude.argotechbrasil.online/login"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Acessar ArgoSaude
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <!-- STUDIO: SAAS SOB MEDIDA COM "IA" -->
-      <section id="studio" class="section">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Studio de IA para SaaS personalizados</div>
-            <div class="section-sub">
-              Descreva a sua necessidade. Nosso assistente gera um roteiro de
-              SaaS, sugere módulos e mostra uma prévia visual. Se fizer sentido,
-              você envia um orçamento pelo WhatsApp com 1 clique.
-            </div>
-          </div>
-        </div>
-
-        <div class="studio-layout">
-          <!-- LADO ESQUERDO: FORMULÁRIO -->
-          <div class="studio-box">
-            <div class="studio-label">Segmento principal</div>
-            <select id="studio-segment" class="studio-select">
-              <option value="prefeitura">Prefeitura / gestão pública</option>
-              <option value="saude">Saúde (clínicas, hospitais, secretarias)</option>
-              <option value="educacao">Educação (escolas, faculdades)</option>
-              <option value="empresas">Empresas privadas / serviços</option>
-              <option value="outro">Outro</option>
-            </select>
-
-            <div class="studio-label">
-              Descreva, em poucas linhas, o que você gostaria que o sistema
-              resolvesse:
-            </div>
-            <textarea
-              id="studio-needs"
-              class="studio-textarea"
-              placeholder="Ex.: controlar contratos e pagamentos de fornecedores, acompanhar estoque de medicamentos, organizar solicitações de atendimento..."
-            ></textarea>
-
-            <div class="studio-label">Nível de automação desejado</div>
-            <select id="studio-automation" class="studio-select">
-              <option value="baixo">Básico (relatórios e cadastro)</option>
-              <option value="medio">Intermediário (alertas e fluxos simples)</option>
-              <option value="alto">Alto (IA, automações e previsões)</option>
-            </select>
-
-            <button id="studio-generate" class="studio-btn">
-              Gerar sugestão com IA (demo)
-            </button>
-
-            <div class="studio-hint">
-              Este é um protótipo local de assistente com IA. Em produção,
-              podemos integrar modelos avançados (OpenAI, etc.) para refinar
-              ainda mais as sugestões.
-            </div>
-          </div>
-
-          <!-- LADO DIREITO: RESULTADO -->
-          <div class="studio-box" id="studio-output">
-            <div class="studio-output-title">
-              Desenhe seu SaaS sob medida
-            </div>
-            <div class="studio-output-sub">
-              Preencha o formulário ao lado e clique em “Gerar sugestão com IA
-              (demo)”. Vamos montar um roteiro de sistema, sugerir módulos e
-              mostrar uma prévia visual simples.
-            </div>
-
-            <div class="studio-preview">
-              Aqui aparecerá a prévia do seu SaaS (nome sugerido, módulos,
-              visão de telas e foco da solução).
-            </div>
-
-            <div class="studio-saas-list">
-              Exemplos de SaaS que já desenvolvemos e podem ser adaptados:
-              <ul>
-                <li>ArgoSaude – Gestão em Saúde Municipal</li>
-                <li>Plataforma preditiva para compras públicas</li>
-                <li>Dashboard de convênios e emendas parlamentares</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- NOTÍCIAS -->
-      <section id="noticias" class="section">
-        <div class="section-header">
-          <div>
-            <div class="section-title">
-              Radar de tecnologia e inteligência artificial
-            </div>
-            <div class="section-sub">
-              Uma curadoria enxuta de notícias para gestores que precisam
-              acompanhar o que importa em IA, governo digital e transformação
-              tecnológica.
-            </div>
-          </div>
-        </div>
-
-        <div class="news-grid" id="news-grid">
-          <!-- Cards estáticos de exemplo; depois você pode integrar uma API -->
-          <article class="news-card">
-            <div class="news-tag">Governo Digital</div>
-            <div class="news-title">
-              IA ajuda prefeituras a prever demanda por serviços públicos
-            </div>
-            <div class="news-desc">
-              Modelos preditivos começam a ser usados para orientar decisões em
-              saúde, educação e assistência social.
-            </div>
-            <div class="news-meta">Atualização manual · Argo Tech Brasil</div>
-          </article>
-
-          <article class="news-card">
-            <div class="news-tag">Inteligência Artificial</div>
-            <div class="news-title">
-              Ferramentas de IA generativa aceleram desenvolvimento de SaaS
-            </div>
-            <div class="news-desc">
-              Uso de IA na prototipagem de telas, geração de código e testes
-              automatizados reduz tempo de entrega de novos sistemas.
-            </div>
-            <div class="news-meta">Insight interno · Argo Tech Brasil</div>
-          </article>
-
-          <article class="news-card">
-            <div class="news-tag">Transformação digital</div>
-            <div class="news-title">
-              Integração entre dados públicos abre espaço para painéis em tempo
-              real
-            </div>
-            <div class="news-desc">
-              Plataformas que conectam bases nacionais (como SUS, compras e
-              convênios) permitem visão integrada da gestão municipal.
-            </div>
-            <div class="news-meta">Curadoria · Argo Tech Brasil</div>
-          </article>
-        </div>
-      </section>
-
-      <!-- CONTATO -->
-      <section id="contato" class="section">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Fale com a gente</div>
-            <div class="section-sub">
-              Vamos entender a realidade da sua prefeitura ou organização e
-              desenhar juntos a melhor forma de aplicar IA na sua gestão.
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-text">
-            <div class="contact-main">
-              Atendimento direto com a Argo Tech Brasil
-            </div>
-            <div>
-              Atendemos por WhatsApp Business para agilizar a comunicação com
-              gestores, técnicos e equipes de TI. Envie uma mensagem e
-              combinamos uma apresentação guiada do ArgoSaude ou de um projeto
-              sob medida.
-            </div>
-          </div>
-
-          <div>
-            <a
-              class="contact-whats"
-              href="https://wa.me/5575982784389"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              💬 Falar pelo WhatsApp
-              <small>+55 (75) 98278-4389</small>
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      © 2025 Argo Tech Brasil · CNPJ 63.246.817/0001-64 · Cardeal da Silva – BA
-    </footer>
-  </div>
-
-  <script>
-    // Mini "IA" local para gerar um roteiro de SaaS a partir do formulário
-    const generateBtn = document.getElementById("studio-generate");
-    const outputBox = document.getElementById("studio-output");
-
-    function buildSaasSuggestion(segment, needs, automation) {
-      const baseNameMap = {
-        prefeitura: "ArgoGov",
-        saude: "ArgoHealth",
-        educacao: "ArgoEdu",
-        empresas: "ArgoBiz",
-        outro: "ArgoFlow",
-      };
-
-      const labelMap = {
-        prefeitura: "prefeituras e gestão pública",
-        saude: "serviços de saúde",
-        educacao: "gestão educacional",
-        empresas: "gestão empresarial",
-        outro: "operações diversas",
-      };
-
-      const autoLabel =
-        automation === "baixo"
-          ? "focado em cadastros bem estruturados e relatórios operacionais"
-          : automation === "medio"
-          ? "com fluxos de aprovação, alertas automáticos e painéis gerenciais"
-          : "com uso intensivo de IA para recomendações, previsões e automações";
-
-      const name = baseNameMap[segment] + " IA";
-
-      const cleanedNeeds =
-        needs.trim().length > 0
-          ? needs.trim()
-          : "organizar rotinas críticas, centralizar informações e gerar indicadores confiáveis.";
-
-      const modules = [];
-
-      modules.push("Módulo de Cadastros (unidades, usuários, perfis e permissões)");
-      modules.push(
-        "Módulo de Painel (dashboard com indicadores em tempo quase real)"
-      );
-
-      if (segment === "prefeitura" || segment === "empresas") {
-        modules.push(
-          "Módulo de Processos e Tarefas (acompanhamento de demandas e responsáveis)"
-        );
-      }
-      if (segment === "saude") {
-        modules.push(
-          "Módulo de Atendimentos / Casos, com histórico centralizado do cidadão"
-        );
-      }
-      if (automation !== "baixo") {
-        modules.push(
-          "Motor de Regras e Alertas (envio de notificações automáticas por evento)"
-        );
-      }
-      if (automation === "alto") {
-        modules.push(
-          "Camada de IA (análise de dados históricos para sugerir prioridades, prever volume de demanda e apoiar decisões)"
-        );
-      }
-
-      const previewLayout = [
-        "• Topo com cards de indicadores-chave (ex.: atendimentos, processos em atraso, alertas críticos).",
-        "• Menu lateral com acesso rápido aos módulos principais.",
-        "• Tela de lista com filtros avançados e busca rápida.",
-        "• Tela de detalhes do registro com linha do tempo de eventos.",
-        "• Relatórios exportáveis (PDF/CSV) para prestar contas e apresentar resultados.",
-      ];
-
-      const adaptableSaas = [
-        "ArgoSaude (gestão em saúde municipal) — pode servir de base para módulos de pacientes, estoques, relatórios e vigilância.",
-        "Motor de análises preditivas em compras públicas — pode inspirar painéis de indicadores e previsões.",
-        "Plataforma de convênios e emendas — base para fluxos de aprovação e prestação de contas.",
-      ];
-
-      return { name, label: labelMap[segment], autoLabel, cleanedNeeds, modules, previewLayout, adaptableSaas };
-    }
-
-    generateBtn.addEventListener("click", () => {
-      const segment = document.getElementById("studio-segment").value;
-      const needs = document.getElementById("studio-needs").value;
-      const automation = document.getElementById("studio-automation").value;
-
-      const suggestion = buildSaasSuggestion(segment, needs, automation);
-
-      const html = `
-        <div class="studio-output-title">
-          ${suggestion.name} — proposta inicial de SaaS
-        </div>
-        <div class="studio-output-sub">
-          Foco em ${suggestion.label}, ${suggestion.autoLabel}. A ideia é construir um sistema que ajude a
-          <strong>${suggestion.cleanedNeeds}</strong>
-        </div>
-
-        <div>
-          <strong>Módulos sugeridos:</strong>
-          <ul>
-            ${suggestion.modules.map((m) => `<li>${m}</li>`).join("")}
-          </ul>
-        </div>
-
-        <div class="studio-preview">
-          <strong>Prévia visual (conceito de telas):</strong><br/>
-          ${suggestion.previewLayout.join("<br/>")}
-        </div>
-
-        <div class="studio-saas-list">
-          <strong>SaaS da Argo Tech que podem ser adaptados ou servir de base:</strong>
-          <ul>
-            ${suggestion.adaptableSaas.map((m) => `<li>${m}</li>`).join("")}
-          </ul>
-        </div>
-
-        <button class="studio-budget-btn" id="studio-budget-btn">
-          💰 Quero fazer um orçamento desse SaaS
-        </button>
-      `;
-
-      outputBox.innerHTML = html;
-
-      const budgetBtn = document.getElementById("studio-budget-btn");
-      budgetBtn.addEventListener("click", () => {
-        const message =
-          "Olá, Argo Tech Brasil! Gostaria de fazer um orçamento para o seguinte SaaS personalizado:%0A%0A" +
-          `Nome sugerido: ${suggestion.name}%0A` +
-          `Segmento: ${suggestion.label}%0A` +
-          `Nível de automação: ${suggestion.autoLabel}%0A%0A` +
-          `Necessidade principal: ${suggestion.cleanedNeeds}%0A%0A` +
-          "Podemos conversar sobre essa ideia?";
-
-        const url = "https://wa.me/5575982784389?text=" + message;
-        window.open(url, "_blank");
-      });
-    });
-  </script>
 </body>
 </html>
