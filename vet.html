@@ -1,572 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>O Veterinário · Sistema de Gestão de Clínicas · Argo Tech Brasil</title>
-
-  <style>
-    :root {
-      --bg-main: #020617;
-      --bg-section-dark: #020617;
-      --bg-section-light: #020617;
-      --accent: #22c55e;
-      --accent-soft: #14532d;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-soft: #1f2937;
-      --radius-lg: 18px;
-      --radius-md: 12px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #020617 0, #000 65%);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* HEADER / NAV */
-
-    header {
-      background: rgba(2, 6, 23, 0.96);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-      backdrop-filter: blur(18px);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .nav-container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    .brand img {
-      height: 32px;
-      width: auto;
-      border-radius: 999px;
-    }
-
-    .brand strong {
-      color: #e5e7eb;
-      font-size: 15px;
-    }
-
-    nav {
-      display: flex;
-      gap: 12px;
-      font-size: 14px;
-    }
-
-    nav a {
-      padding: 6px 12px;
-      border-radius: 999px;
-      color: var(--text-muted);
-      transition: 0.18s ease;
-      white-space: nowrap;
-    }
-
-    nav a:hover {
-      background: rgba(15, 23, 42, 0.85);
-      color: #e5e7eb;
-    }
-
-    /* Considero esta página como pertencente a Soluções */
-    nav a.active {
-      background: rgba(34, 197, 94, 0.15);
-      color: #bbf7d0;
-      border: 1px solid rgba(34, 197, 94, 0.4);
-    }
-
-    /* CONTEÚDO */
-
-    main {
-      flex: 1;
-    }
-
-    .hero {
-      max-width: 1120px;
-      margin: 26px auto 0;
-      padding: 0 20px 10px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 24px;
-      align-items: center;
-    }
-
-    .hero-title {
-      font-size: 26px;
-      margin-bottom: 6px;
-    }
-
-    .hero-sub {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 520px;
-    }
-
-    .hero-tags {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 11px;
-    }
-
-    .tag {
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.28);
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
-    }
-
-    .hero-cta {
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 9px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(22, 163, 74, 0.8);
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #022c22;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.18s ease;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.05);
-      transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.4);
-    }
-
-    .btn-outline {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px dashed rgba(148, 163, 184, 0.6);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .hero-mock {
-      border-radius: 22px;
-      border: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #0f172a 0, #020617 55%);
-      padding: 14px 10px 12px;
-      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.9);
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-mock-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      padding: 0 4px;
-      color: #e5e7eb;
-      font-size: 12px;
-    }
-
-    .hero-mock-screen {
-      border-radius: 16px;
-      border: 1px solid rgba(30, 64, 175, 0.8);
-      background: linear-gradient(145deg, #020617 0, #111827 40%, #020617 100%);
-      height: 150px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mock-card {
-      position: absolute;
-      top: 18px;
-      left: 12px;
-      right: 12px;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 10px 12px;
-      font-size: 11px;
-    }
-
-    .mock-metrics {
-      margin-top: 6px;
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .mock-pill {
-      border-radius: 999px;
-      padding: 3px 7px;
-      font-size: 10px;
-      border: 1px solid rgba(37, 99, 235, 0.8);
-      color: #bfdbfe;
-    }
-
-    /* SEÇÕES */
-
-    .section {
-      max-width: 1120px;
-      margin: 18px auto 0;
-      padding: 0 20px 24px;
-    }
-
-    .section h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .section p {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 800px;
-    }
-
-    .section-grid {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .info-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(31, 41, 55, 0.95);
-      padding: 14px 14px 16px;
-      font-size: 13px;
-    }
-
-    .info-card h3 {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .info-card ul {
-      margin-top: 6px;
-      padding-left: 16px;
-      color: #d1d5db;
-    }
-
-    .info-card li {
-      margin-bottom: 4px;
-    }
-
-    .highlight-strip {
-      margin-top: 18px;
-      border-radius: 999px;
-      border: 1px dashed rgba(55, 65, 81, 0.9);
-      padding: 8px 12px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .cta-final {
-      max-width: 1120px;
-      margin: 14px auto 32px;
-      padding: 0 20px 26px;
-    }
-
-    .cta-box {
-      border-radius: 18px;
-      border: 1px solid rgba(34, 197, 94, 0.35);
-      background: radial-gradient(circle at top left, #022c22 0, #020617 45%);
-      padding: 18px 16px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 14px;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    footer {
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 14px 16px 18px;
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: center;
-      background: #020617;
-    }
-
-    /* RESPONSIVO */
-
-    @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-mock {
-        max-width: 360px;
-        margin: 0 auto;
-      }
-
-      .section-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 700px) {
-      .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        width: 100%;
-        flex-wrap: wrap;
-      }
-
-      .hero {
-        margin-top: 18px;
-      }
-
-      .hero-title {
-        font-size: 22px;
-      }
-
-      .section-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .cta-box {
-        padding: 16px 14px 18px;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O Veterinário – Sistema de Gestão de Clínicas Veterinárias</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="bg-slate-950 text-slate-200">
 
-<header>
-  <div class="nav-container">
-    <div class="brand">
-      <img src="logo.png" alt="Logo Argo Tech Brasil" />
-      <div>
-        <strong>Argo Tech Brasil</strong><br />
-        <span>IA &amp; Sistemas SaaS para gestão pública e negócios</span>
-      </div>
-    </div>
-    <nav>
+<header class="px-6 py-4 border-b border-slate-800">
+  <div class="mx-auto max-w-6xl flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="logo.png" alt="Argo Tech Brasil" class="h-10">
+      <span class="text-lg font-semibold">Argo Tech Brasil</span>
+    </a>
+    <nav class="flex gap-6">
       <a href="index.html">Início</a>
-      <a href="noticias.html">Notícias</a>
-      <a href="solucoes.html" class="active">Soluções</a>
+      <a href="solucoes.html">Soluções</a>
       <a href="saas-sob-medida.html">SaaS sob Medida</a>
+      <a href="contato.html">Contato</a>
     </nav>
   </div>
 </header>
 
-<main>
-  <!-- HERO -->
-  <section class="hero">
+<main class="mx-auto max-w-6xl px-6 py-12 space-y-14">
+
+<section class="space-y-6">
+  <h1 class="text-4xl font-bold text-slate-50">O Veterinário</h1>
+  <p class="text-lg text-slate-300">
+    Sistema para clínicas veterinárias com prontuário eletrônico, controle financeiro,
+    gestão de estoque, agendamentos e relatórios.
+  </p>
+</section>
+
+<section>
+  <h2 class="text-2xl font-semibold text-slate-50 mb-4">Principais funcionalidades</h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="rounded-xl bg-slate-900 p-5 border border-slate-800">
+      <h3 class="font-semibold text-slate-50 mb-2">Pacientes e prontuários</h3>
+      <p class="text-sm">Cadastro completo com histórico, anexos e timeline clínica.</p>
+    </div>
+
+    <div class="rounded-xl bg-slate-900 p-5 border border-slate-800">
+      <h3 class="font-semibold text-slate-50 mb-2">Agenda, vacinas e retornos</h3>
+      <p class="text-sm">Controle da rotina e alertas automáticos de segunda dose.</p>
+    </div>
+
+    <div class="rounded-xl bg-slate-900 p-5 border border-slate-800">
+      <h3 class="font-semibold text-slate-50 mb-2">Financeiro e estoque</h3>
+      <p class="text-sm">PDV com código de barras e relatórios financeiros.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="text-2xl font-semibold text-slate-50 mb-4">Tecnologia e experiência</h2>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="rounded-xl bg-slate-900 p-5 border border-slate-800">
+      <h3 class="font-semibold mb-2">Experiência de uso</h3>
+      <p class="text-sm">Interface moderna e responsiva para PC, tablet e celular.</p>
+    </div>
+
+    <div class="rounded-xl bg-slate-900 p-5 border border-slate-800">
+      <h3 class="font-semibold mb-2">Arquitetura do sistema</h3>
+      <p class="text-sm">Frontend em React, backend em Express e banco PostgreSQL.</p>
+    </div>
+
+    <div class="rounded-xl bg-slate-900 p-5 border border-slate-800">
+      <h3 class="font-semibold mb-2">Recursos avançados</h3>
+      <p class="text-sm">Relatórios, envio por WhatsApp e PWA instalável.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Rodapé CTA atualizado ✔ SEM BOTÃO -->
+<section class="mt-12 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 p-[1px]">
+  <div class="flex flex-col gap-4 rounded-2xl bg-slate-950/95 px-6 py-8 md:flex-row md:items-center md:justify-between">
     <div>
-      <h1 class="hero-title">O Veterinário · Sistema de Gestão de Clínicas</h1>
-      <p class="hero-sub">
-        Plataforma SaaS completa para clínicas veterinárias: pacientes, tutores, agenda,
-        vacinas, estoque, PDV, financeiro e relatórios clínicos — com visual médico
-        profissional e modo escuro total.
+      <h3 class="text-xl font-semibold text-slate-50">
+        Quer testar O Veterinário na sua clínica?
+      </h3>
+      <p class="mt-2 text-sm text-slate-200">
+        A Argo Tech Brasil adapta o sistema à realidade da sua clínica, configura usuários, perfis de acesso,
+        relatórios e ajuda na migração de dados quando necessário.
       </p>
-
-      <div class="hero-tags">
-        <span class="tag">Segmento Veterinário</span>
-        <span class="tag">Prontuário Completo</span>
-        <span class="tag">Financeiro &amp; Estoque</span>
-        <span class="tag">Importação SimplesVet</span>
-        <span class="tag">PWA para celular</span>
-      </div>
-
-      <div class="hero-cta">
-        <a href="https://OVETERINARIO.replit.app" target="_blank" class="btn-primary">
-          Acessar sistema
-        </a>
-        <span class="btn-outline">
-          Ideal para clínicas, consultórios e centros veterinários que querem profissionalizar a gestão.
-        </span>
-      </div>
     </div>
 
-    <div class="hero-mock">
-      <div class="hero-mock-top">
-        <span>Painel em tempo real</span>
-        <span>Modo escuro</span>
-      </div>
-      <div class="hero-mock-screen">
-        <div class="mock-card">
-          <strong>Consultas &amp; Receita do mês</strong>
-          <div class="mock-metrics">
-            <span class="mock-pill">Consultas hoje: 0</span>
-            <span class="mock-pill">Receita do mês: R$ 0,00</span>
-            <span class="mock-pill">Pacientes ativos</span>
-          </div>
-          <p style="margin-top:8px; color:#9ca3af;">
-            Dashboard com evolução de agendamentos, distribuição de espécies,
-            indicadores financeiros e alertas de retornos e vacinas.
-          </p>
-        </div>
-      </div>
+    <div class="text-sm text-slate-300">
+      Fale com a gente para solicitar acesso ou demonstração guiada.
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- VISÃO GERAL -->
-  <section class="section">
-    <h2>Visão geral do sistema</h2>
-    <p>
-      O Veterinário foi desenhado para ser um sistema completo, porém intuitivo, com fluxo de trabalho pensado
-      junto com a rotina real de clínicas veterinárias. A plataforma cobre desde o cadastro de pacientes e tutores
-      até o faturamento, estoque, PDV e relatórios gerenciais.
-    </p>
-  </section>
-
-  <!-- FUNCIONALIDADES PRINCIPAIS -->
-  <section class="section">
-    <h2>Principais funcionalidades</h2>
-
-    <div class="section-grid">
-      <article class="info-card">
-        <h3>Pacientes, tutores e prontuários</h3>
-        <p>
-          Cadastro completo de animais, com espécie, raça, idade, histórico e vínculo ao tutor.
-        </p>
-        <ul>
-          <li>Prontuário clínico estruturado por atendimentos</li>
-          <li>Anexos de imagens e PDFs diretamente no histórico</li>
-          <li>Timeline visual com linha do tempo de consultas e procedimentos</li>
-        </ul>
-      </article>
-
-      <article class="info-card">
-        <h3>Agenda, vacinas e retornos</h3>
-        <p>
-          Organização da rotina da clínica com controle de agendamentos e protocolos vacinais.
-        </p>
-        <ul>
-          <li>Agenda por data, horário, profissional e tipo de atendimento</li>
-          <li>Protocolos de vacinas com cálculo automático da próxima dose</li>
-          <li>Alertas de retornos e acompanhamento pós-atendimento</li>
-        </ul>
-      </article>
-
-      <article class="info-card">
-        <h3>Financeiro, estoque e PDV</h3>
-        <p>
-          Controle completo de serviços, produtos, vendas e recebimentos.
-        </p>
-        <ul>
-          <li>Categorias e subcategorias financeiras com relatórios</li>
-          <li>Controle de estoque com entrada, saída e ajustes</li>
-          <li>PDV para vendas rápidas com leitor de código de barras</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="highlight-strip">
-      Importação inteligente no padrão SimplesVet, permitindo aproveitar dados de pacientes,
-      tutores, produtos/serviços e histórico clínico com alto grau de automação.
-    </div>
-  </section>
-
-  <!-- TECNOLOGIA E EXPERIÊNCIA -->
-  <section class="section">
-    <h2>Tecnologia e experiência de uso</h2>
-
-    <div class="section-grid">
-      <article class="info-card">
-        <h3>Experiência do usuário</h3>
-        <ul>
-          <li>Interface em modo escuro, limpa e moderna</li>
-          <li>Layout responsivo, pronto para uso em notebook, tablet e celular</li>
-          <li>Tipografia pensada para leitura em ambientes de clínica</li>
-        </ul>
-      </article>
-
-      <article class="info-card">
-        <h3>Arquitetura do sistema</h3>
-        <ul>
-          <li>Frontend em React 18 com componentes Shadcn UI</li>
-          <li>Backend em Express com APIs REST organizadas</li>
-          <li>Validações com Zod e modelos em Drizzle ORM</li>
-        </ul>
-      </article>
-
-      <article class="info-card">
-        <h3>Recursos avançados</h3>
-        <ul>
-          <li>Relatórios clínicos e financeiros em PDF e Excel</li>
-          <li>Envio facilitado via WhatsApp a partir dos cadastros</li>
-          <li>PWA para instalar o sistema no celular como “app”</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta-final">
-    <div class="cta-box">
-      <div class="cta-row">
-        <div>
-          <strong>Quer testar O Veterinário na sua clínica?</strong>
-          <p style="font-size:13px; color:#e5e7eb; margin-top:4px;">
-            A Argo Tech Brasil adapta o sistema à realidade da sua clínica, configura usuários, perfis de acesso,
-            relatórios e ajuda na migração de dados quando necessário.
-          </p>
-        </div>
-        <a href="https://OVETERINARIO.replit.app" target="_blank" class="btn-primary">
-          Acessar demonstração agora
-        </a>
-      </div>
-    </div>
-  </section>
 </main>
 
-<footer>
-  © 2025 Argo Tech Brasil — O Veterinário · Sistema de Gestão de Clínicas Veterinárias.
+<footer class="px-6 py-6 border-t border-slate-800 text-center text-xs text-slate-500">
+  © 2025 Argo Tech Brasil — Sistema de Gestão de Clínicas Veterinárias.
 </footer>
 
 </body>
