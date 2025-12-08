@@ -1,138 +1,329 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soluções SaaS – ArgoTech Brasil</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soluções - Argo Tech Brasil</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<style>
     body {
-        font-family: Arial, sans-serif;
-        background: #0b1224;
-        color: #e5e7eb;
-        margin: 0;
-        padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     header {
-        background: #0f172a;
-        padding: 20px;
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        color: #00d26a;
-        border-bottom: 1px solid #1e293b;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(10px);
     }
 
-    .container {
-        max-width: 1000px;
-        margin: 40px auto;
-        padding: 10px;
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
     }
 
-    .descricao {
-        font-size: 16px;
-        margin-bottom: 25px;
-        text-align: center;
-        opacity: .9;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: #f9fafb;
     }
 
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+    .brand span {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #9ca3af;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #e5e7eb;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(15, 23, 42, 0.9);
+      color: #ffffff;
+    }
+
+    .nav-links .active {
+      background: #16a34a;
+      color: #f9fafb;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 16px 40px;
+    }
+
+    .page-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      color: #9ca3af;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      max-width: 640px;
+    }
+
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    @media (min-width: 800px) {
+      .solutions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     .card {
-        background: #111827;
-        padding: 20px;
-        border-radius: 12px;
-        border: 1px solid #1e293b;
-        transition: 0.2s;
-    }
-    .card:hover {
-        border-color: #00d26a;
-        transform: translateY(-3px);
-    }
-
-    .card h3 {
-        margin-top: 0;
-        color: #00d26a;
+      background: #020617;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
     }
 
-    .card p {
-        font-size: 14px;
-        opacity: .85;
-        min-height: 60px;
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
     }
 
-    .btn {
-        display: inline-block;
-        background: #00d26a;
-        padding: 10px 15px;
-        border-radius: 6px;
-        color: #0f172a;
-        font-weight: bold;
-        text-decoration: none;
-        transition: .2s;
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #f9fafb;
     }
-    .btn:hover {
-        background: #04bb3c;
+
+    .card-badge {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.1);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .card-sub {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      color: #d1d5db;
+      line-height: 1.5;
+    }
+
+    .card-list {
+      margin-top: 8px;
+      list-style: none;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .card-list li {
+      margin-bottom: 4px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .card-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #22c55e;
+    }
+
+    .card-footer {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .card-footer strong {
+      color: #e5e7eb;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: #16a34a;
+      color: #f9fafb;
+      transition: background 0.2s, transform 0.1s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      background: #15803d;
+      transform: translateY(-1px);
     }
 
     footer {
-        margin-top: 40px;
-        text-align: center;
-        font-size: 13px;
-        opacity: .5;
-        padding: 20px;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+      padding: 16px;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
     }
-</style>
-
+  </style>
 </head>
 <body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <span>🚀</span>
+        Argo Tech Brasil
+        <span>IA & Sistemas SaaS para gestão pública e negócios</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="solucoes.html" class="active">Soluções</a>
+        <a href="saas-sob-medida.html">SaaS sob Medida</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-    Soluções Inteligentes – ArgoTech Brasil
-</header>
-
-<div class="container">
-
-    <p class="descricao">
-        Explore nossas soluções SaaS sob demanda desenvolvidas com IA e automação.  
-        Clique em uma solução para visualizar e testar.
+  <!-- Conteúdo principal -->
+  <main>
+    <h1 class="page-title">Soluções em produção</h1>
+    <p class="page-subtitle">
+      Aqui ficam os sistemas SaaS já implantados ou prontos para implantação, com foco em 
+      gestão pública municipal e negócios. Cada solução pode ser adaptada para novos clientes.
     </p>
 
-    <div class="cards">
-
-        <!-- CARD 1 — ARGO SAÚDE -->
-        <div class="card">
-            <h3>ArgoSaúde – Gestão Municipal</h3>
-            <p>Sistema integrado de gestão da saúde municipal com módulos para atenção básica, estoque, relatórios, indicadores e governança pública.</p>
-            <a class="btn" href="https://saude-cardeal-q--aurea-argolo.replit.app" target="_blank">Acessar Sistema</a>
+    <section class="solutions-grid">
+      <!-- CARD 1 – ArgoSaúde / MuniSaúde -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">ArgoSaúde · Gestão Municipal de Saúde</h2>
+            <p class="card-sub">Implantado em Cardeal da Silva – BA · v2.0.0</p>
+          </div>
+          <span class="card-badge">Em produção</span>
         </div>
 
-        <!-- CARD 2 — MODELO PARA FUTURO SISTEMA -->
-        <div class="card">
-            <h3>⚙️ SaaS sob Medida</h3>
-            <p>Descreva o sistema que deseja e nossa IA projeta automaticamente arquitetura, módulos e telas.</p>
-            <a class="btn" href="saas-sob-medida.html">Gerar Meu SaaS</a>
+        <div class="card-body">
+          Plataforma completa para gestão municipal de saúde: unidades, equipes, pacientes,
+          transporte sanitário, estoque de medicamentos, DIU, exames, indicadores e relatórios
+          operacionais para secretarias de saúde.
+          <ul class="card-list">
+            <li>Módulos integrados: pacientes, atendimentos, transporte, estoque, exames</li>
+            <li>Foco em prefeituras de pequeno e médio porte</li>
+            <li>Arquitetura SaaS pronta para replicar em outros municípios</li>
+          </ul>
         </div>
 
-        <!-- CARD 3 — RESERVADO PARA FUTUROS SAAS -->
-        <div class="card">
-            <h3>🚧 Em Desenvolvimento</h3>
-            <p>Solução corporativa que será publicada em breve. Mantenha-se atento para novidades.</p>
-            <a class="btn" href="#">Brevemente</a>
+        <div class="card-footer">
+          <div>
+            <strong>Município atual:</strong> Cardeal da Silva – BA<br />
+            <span>Credenciais de demonstração disponíveis sob consulta.</span>
+          </div>
+          <a class="btn-primary" href="https://saude-cardeal-q--aurea-argolo.replit.app" target="_blank" rel="noopener">
+            Acessar sistema
+          </a>
+        </div>
+      </article>
+
+      <!-- CARD 2 – Placeholder para próximos SaaS -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Próximo SaaS · Segmento a definir</h2>
+            <p class="card-sub">Slot reservado para o próximo sistema em produção</p>
+          </div>
+          <span class="card-badge" style="background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.3); color:#60a5fa;">
+            Em planejamento
+          </span>
         </div>
 
-    </div>
+        <div class="card-body">
+          Este card será usado para publicar o próximo SaaS (ex.: gestão de frotas, depósitos
+          de bebidas, educação ou outro projeto em parceria com a Argo Tech Brasil.
+          <ul class="card-list">
+            <li>Arquitetura SaaS multi-cidade já definida</li>
+            <li>Integração com IA para relatórios e diagnósticos automáticos</li>
+            <li>Painel web responsivo + possibilidade de app mobile no futuro</li>
+          </ul>
+        </div>
 
-</div>
+        <div class="card-footer">
+          <div>
+            <strong>Status:</strong> Em desenho técnico<br />
+            <span>Quando o sistema estiver pronto, o link será publicado aqui.</span>
+          </div>
+          <a class="btn-primary" href="saas-sob-medida.html">
+            Desenhar novo SaaS
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
 
-<footer>
-    © 2025 ArgoTech Brasil – Transformando gestão com automação e inteligência artificial.
-</footer>
+  <footer>
+    © <span id="ano"></span> Argo Tech Brasil · Soluções em IA e sistemas SaaS.
+  </footer>
 
+  <script>
+    // só pra deixar o ano automático, não interfere no GitHub Pages
+    document.getElementById('ano').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
