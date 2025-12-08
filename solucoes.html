@@ -3,19 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>O Veterinário · Sistema de Gestão de Clínicas · Argo Tech Brasil</title>
+  <title>Soluções SaaS · Argo Tech Brasil</title>
 
   <style>
+    /* ESTILOS GERAIS */
     :root {
       --bg-main: #020617;
-      --bg-section-dark: #020617;
-      --bg-section-light: #020617;
+      --bg-card: #020617;
+      --bg-header: #020617;
       --accent: #22c55e;
       --accent-soft: #14532d;
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --border-soft: #1f2937;
-      --radius-lg: 18px;
+      --danger: #f97373;
+      --warning: #facc15;
+      --radius-lg: 16px;
       --radius-md: 12px;
     }
 
@@ -27,7 +30,7 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #020617 0, #000 65%);
+      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -35,15 +38,15 @@
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
-    /* HEADER / NAV */
+    /* TOPO / NAVBAR */
 
     header {
-      background: rgba(2, 6, 23, 0.96);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(2, 6, 23, 0.95);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
       backdrop-filter: blur(18px);
       position: sticky;
       top: 0;
@@ -55,8 +58,8 @@
       margin: 0 auto;
       padding: 12px 20px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
     }
 
@@ -68,15 +71,15 @@
       color: var(--text-muted);
     }
 
+    .brand strong {
+      color: #e5e7eb;
+      font-size: 15px;
+    }
+
     .brand img {
       height: 32px;
       width: auto;
       border-radius: 999px;
-    }
-
-    .brand strong {
-      color: #e5e7eb;
-      font-size: 15px;
     }
 
     nav {
@@ -94,237 +97,176 @@
     }
 
     nav a:hover {
-      background: rgba(15, 23, 42, 0.85);
+      background: rgba(15, 23, 42, 0.8);
       color: #e5e7eb;
     }
 
-    /* Considero esta página como pertencente a Soluções */
     nav a.active {
       background: rgba(34, 197, 94, 0.15);
       color: #bbf7d0;
       border: 1px solid rgba(34, 197, 94, 0.4);
     }
 
-    /* CONTEÚDO */
+    /* CONTEÚDO PRINCIPAL */
 
     main {
       flex: 1;
     }
 
-    .hero {
+    .page-hero {
       max-width: 1120px;
-      margin: 26px auto 0;
-      padding: 0 20px 10px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 24px;
-      align-items: center;
+      margin: 28px auto 0;
+      padding: 0 20px 8px;
     }
 
-    .hero-title {
+    .page-hero h1 {
       font-size: 26px;
       margin-bottom: 6px;
     }
 
-    .hero-sub {
+    .page-hero p {
       font-size: 14px;
       color: var(--text-muted);
-      max-width: 520px;
+      max-width: 620px;
     }
 
-    .hero-tags {
+    .solutions-section {
+      max-width: 1120px;
+      margin: 10px auto 40px;
+      padding: 0 20px 40px;
+    }
+
+    .solutions-grid {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .solution-card {
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 55%);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    .solution-card h3 {
+      font-size: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .solution-card small {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .status {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+    }
+
+    .status.production {
+      background: rgba(22, 163, 74, 0.18);
+      border-color: rgba(22, 163, 74, 0.7);
+      color: #bbf7d0;
+    }
+
+    .status.planning {
+      background: rgba(59, 130, 246, 0.13);
+      border-color: rgba(59, 130, 246, 0.7);
+      color: #bfdbfe;
+    }
+
+    .card-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .details-list {
+      margin-top: 6px;
+      padding-left: 16px;
+      font-size: 13px;
+      color: #d1d5db;
+    }
+
+    .details-list li {
+      margin-bottom: 4px;
+    }
+
+    .card-footer {
       margin-top: 10px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 11px;
-    }
-
-    .tag {
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.28);
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
-    }
-
-    .hero-cta {
-      margin-top: 14px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      justify-content: space-between;
       align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--text-muted);
     }
 
-    .btn-primary {
+    .badge-mini {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 9px 16px;
+      gap: 4px;
+      padding: 7px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(22, 163, 74, 0.8);
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #022c22;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 13px;
+      border: 1px solid transparent;
       cursor: pointer;
       transition: 0.18s ease;
       text-decoration: none;
       white-space: nowrap;
     }
 
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      border-color: rgba(22, 163, 74, 0.7);
+      color: #022c22;
+      font-weight: 600;
+    }
+
     .btn-primary:hover {
       filter: brightness(1.05);
       transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.4);
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.35);
     }
 
-    .btn-outline {
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px dashed rgba(148, 163, 184, 0.6);
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .hero-mock {
-      border-radius: 22px;
-      border: 1px solid rgba(30, 64, 175, 0.6);
-      background: radial-gradient(circle at top, #0f172a 0, #020617 55%);
-      padding: 14px 10px 12px;
-      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.9);
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-mock-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      padding: 0 4px;
-      color: #e5e7eb;
-      font-size: 12px;
-    }
-
-    .hero-mock-screen {
-      border-radius: 16px;
-      border: 1px solid rgba(30, 64, 175, 0.8);
-      background: linear-gradient(145deg, #020617 0, #111827 40%, #020617 100%);
-      height: 150px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mock-card {
-      position: absolute;
-      top: 18px;
-      left: 12px;
-      right: 12px;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 10px 12px;
-      font-size: 11px;
-    }
-
-    .mock-metrics {
-      margin-top: 6px;
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .mock-pill {
-      border-radius: 999px;
-      padding: 3px 7px;
-      font-size: 10px;
-      border: 1px solid rgba(37, 99, 235, 0.8);
-      color: #bfdbfe;
-    }
-
-    /* SEÇÕES */
-
-    .section {
-      max-width: 1120px;
-      margin: 18px auto 0;
-      padding: 0 20px 24px;
-    }
-
-    .section h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .section p {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 800px;
-    }
-
-    .section-grid {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .info-card {
+    .btn-secondary {
       background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(31, 41, 55, 0.95);
-      padding: 14px 14px 16px;
-      font-size: 13px;
+      border-color: rgba(55, 65, 81, 0.9);
+      color: #e5e7eb;
     }
 
-    .info-card h3 {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .info-card ul {
-      margin-top: 6px;
-      padding-left: 16px;
-      color: #d1d5db;
-    }
-
-    .info-card li {
-      margin-bottom: 4px;
-    }
-
-    .highlight-strip {
-      margin-top: 18px;
-      border-radius: 999px;
-      border: 1px dashed rgba(55, 65, 81, 0.9);
-      padding: 8px 12px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .cta-final {
-      max-width: 1120px;
-      margin: 14px auto 32px;
-      padding: 0 20px 26px;
-    }
-
-    .cta-box {
-      border-radius: 18px;
-      border: 1px solid rgba(34, 197, 94, 0.35);
-      background: radial-gradient(circle at top left, #022c22 0, #020617 45%);
-      padding: 18px 16px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 14px;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      justify-content: space-between;
+    .btn-secondary:hover {
+      background: rgba(30, 64, 175, 0.55);
+      border-color: rgba(37, 99, 235, 0.9);
     }
 
     footer {
@@ -336,20 +278,15 @@
       background: #020617;
     }
 
-    /* RESPONSIVO */
+    /* RESPONSIVO – CELULAR / TABLET */
 
     @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-mock {
-        max-width: 360px;
-        margin: 0 auto;
-      }
-
-      .section-grid {
+      .solutions-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .page-hero h1 {
+        font-size: 22px;
       }
     }
 
@@ -361,23 +298,20 @@
 
       nav {
         width: 100%;
+        justify-content: flex-start;
         flex-wrap: wrap;
       }
 
-      .hero {
-        margin-top: 18px;
-      }
-
-      .hero-title {
-        font-size: 22px;
-      }
-
-      .section-grid {
+      .solutions-grid {
         grid-template-columns: 1fr;
       }
 
-      .cta-box {
+      .solution-card {
         padding: 16px 14px 18px;
+      }
+
+      .page-hero {
+        margin-top: 18px;
       }
     }
   </style>
@@ -394,6 +328,7 @@
         <span>IA &amp; Sistemas SaaS para gestão pública e negócios</span>
       </div>
     </div>
+
     <nav>
       <a href="index.html">Início</a>
       <a href="noticias.html">Notícias</a>
@@ -404,169 +339,116 @@
 </header>
 
 <main>
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <h1 class="hero-title">O Veterinário · Sistema de Gestão de Clínicas</h1>
-      <p class="hero-sub">
-        Plataforma SaaS completa para clínicas veterinárias: pacientes, tutores, agenda,
-        vacinas, estoque, PDV, financeiro e relatórios clínicos — com visual médico
-        profissional e modo escuro total.
-      </p>
-
-      <div class="hero-tags">
-        <span class="tag">Segmento Veterinário</span>
-        <span class="tag">Prontuário Completo</span>
-        <span class="tag">Financeiro &amp; Estoque</span>
-        <span class="tag">Importação SimplesVet</span>
-        <span class="tag">PWA para celular</span>
-      </div>
-
-      <div class="hero-cta">
-        <a href="https://OVETERINARIO.replit.app" target="_blank" class="btn-primary">
-          Acessar sistema
-        </a>
-        <span class="btn-outline">
-          Ideal para clínicas, consultórios e centros veterinários que querem profissionalizar a gestão.
-        </span>
-      </div>
-    </div>
-
-    <div class="hero-mock">
-      <div class="hero-mock-top">
-        <span>Painel em tempo real</span>
-        <span>Modo escuro</span>
-      </div>
-      <div class="hero-mock-screen">
-        <div class="mock-card">
-          <strong>Consultas &amp; Receita do mês</strong>
-          <div class="mock-metrics">
-            <span class="mock-pill">Consultas hoje: 0</span>
-            <span class="mock-pill">Receita do mês: R$ 0,00</span>
-            <span class="mock-pill">Pacientes ativos</span>
-          </div>
-          <p style="margin-top:8px; color:#9ca3af;">
-            Dashboard com evolução de agendamentos, distribuição de espécies,
-            indicadores financeiros e alertas de retornos e vacinas.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VISÃO GERAL -->
-  <section class="section">
-    <h2>Visão geral do sistema</h2>
+  <section class="page-hero">
+    <h1>Soluções em produção</h1>
     <p>
-      O Veterinário foi desenhado para ser um sistema completo, porém intuitivo, com fluxo de trabalho pensado
-      junto com a rotina real de clínicas veterinárias. A plataforma cobre desde o cadastro de pacientes e tutores
-      até o faturamento, estoque, PDV e relatórios gerenciais.
+      Aqui ficam os sistemas SaaS já implantados ou prontos para implantação, 
+      com foco em gestão pública municipal e segmentos especializados.
     </p>
   </section>
 
-  <!-- FUNCIONALIDADES PRINCIPAIS -->
-  <section class="section">
-    <h2>Principais funcionalidades</h2>
+  <section class="solutions-section">
+    <div class="solutions-grid">
 
-    <div class="section-grid">
-      <article class="info-card">
-        <h3>Pacientes, tutores e prontuários</h3>
-        <p>
-          Cadastro completo de animais, com espécie, raça, idade, histórico e vínculo ao tutor.
-        </p>
-        <ul>
-          <li>Prontuário clínico estruturado por atendimentos</li>
-          <li>Anexos de imagens e PDFs diretamente no histórico</li>
-          <li>Timeline visual com linha do tempo de consultas e procedimentos</li>
-        </ul>
-      </article>
+      <!-- CARD 1: ARGO SAÚDE -->
+      <article class="solution-card">
+        <header>
+          <h3>
+            ArgoSaúde
+            <span class="status production">EM PRODUÇÃO</span>
+          </h3>
+          <small>Gestão Municipal de Saúde · v2.0.0</small>
+        </header>
 
-      <article class="info-card">
-        <h3>Agenda, vacinas e retornos</h3>
-        <p>
-          Organização da rotina da clínica com controle de agendamentos e protocolos vacinais.
-        </p>
-        <ul>
-          <li>Agenda por data, horário, profissional e tipo de atendimento</li>
-          <li>Protocolos de vacinas com cálculo automático da próxima dose</li>
-          <li>Alertas de retornos e acompanhamento pós-atendimento</li>
-        </ul>
-      </article>
-
-      <article class="info-card">
-        <h3>Financeiro, estoque e PDV</h3>
-        <p>
-          Controle completo de serviços, produtos, vendas e recebimentos.
-        </p>
-        <ul>
-          <li>Categorias e subcategorias financeiras com relatórios</li>
-          <li>Controle de estoque com entrada, saída e ajustes</li>
-          <li>PDV para vendas rápidas com leitor de código de barras</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="highlight-strip">
-      Importação inteligente no padrão SimplesVet, permitindo aproveitar dados de pacientes,
-      tutores, produtos/serviços e histórico clínico com alto grau de automação.
-    </div>
-  </section>
-
-  <!-- TECNOLOGIA E EXPERIÊNCIA -->
-  <section class="section">
-    <h2>Tecnologia e experiência de uso</h2>
-
-    <div class="section-grid">
-      <article class="info-card">
-        <h3>Experiência do usuário</h3>
-        <ul>
-          <li>Interface em modo escuro, limpa e moderna</li>
-          <li>Layout responsivo, pronto para uso em notebook, tablet e celular</li>
-          <li>Tipografia pensada para leitura em ambientes de clínica</li>
-        </ul>
-      </article>
-
-      <article class="info-card">
-        <h3>Arquitetura do sistema</h3>
-        <ul>
-          <li>Frontend em React 18 com componentes Shadcn UI</li>
-          <li>Backend em Express com APIs REST organizadas</li>
-          <li>Validações com Zod e modelos em Drizzle ORM</li>
-        </ul>
-      </article>
-
-      <article class="info-card">
-        <h3>Recursos avançados</h3>
-        <ul>
-          <li>Relatórios clínicos e financeiros em PDF e Excel</li>
-          <li>Envio facilitado via WhatsApp a partir dos cadastros</li>
-          <li>PWA para instalar o sistema no celular como “app”</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta-final">
-    <div class="cta-box">
-      <div class="cta-row">
-        <div>
-          <strong>Quer testar O Veterinário na sua clínica?</strong>
-          <p style="font-size:13px; color:#e5e7eb; margin-top:4px;">
-            A Argo Tech Brasil adapta o sistema à realidade da sua clínica, configura usuários, perfis de acesso,
-            relatórios e ajuda na migração de dados quando necessário.
-          </p>
+        <div class="card-body">
+          Plataforma implantada na Secretaria Municipal de Saúde de Cardeal da Silva – BA,
+          cobrindo unidades, equipes, pacientes, transporte e estoque de insumos.
+          <ul class="details-list">
+            <li>Módulos integrados: pacientes, atendimentos, exames e transporte</li>
+            <li>Relatórios operacionais e painéis para secretarias de saúde</li>
+            <li>Arquitetura multi-município pronta para escalar para novas prefeituras</li>
+          </ul>
         </div>
-        <a href="https://OVETERINARIO.replit.app" target="_blank" class="btn-primary">
-          Acessar demonstração agora
-        </a>
-      </div>
+
+        <div class="card-footer">
+          <span class="badge-mini">Município atual: Cardeal da Silva – BA</span>
+        </div>
+
+        <div class="btn-row">
+          <a href="https://saude.argotechbrasil.online" target="_blank" class="btn-primary">
+            Acessar sistema
+          </a>
+        </div>
+      </article>
+
+      <!-- CARD 2: O VETERINÁRIO -->
+      <article class="solution-card">
+        <header>
+          <h3>
+            O Veterinário
+            <span class="status production">MVP PRONTO</span>
+          </h3>
+          <small>Sistema de Gestão de Clínicas Veterinárias</small>
+        </header>
+
+        <div class="card-body">
+          SaaS completo para clínicas veterinárias com prontuário, vacinas, agenda,
+          financeiro, estoque e PDV – com visual médico profissional e modo escuro.
+          <ul class="details-list">
+            <li>Cadastro de pacientes (animais) e tutores, com histórico clínico completo</li>
+            <li>Dashboard com métricas em tempo real e alertas inteligentes</li>
+            <li>Importação de dados no padrão SimplesVet e PWA instalável</li>
+          </ul>
+        </div>
+
+        <div class="card-footer">
+          <span class="badge-mini">Segmento: Clínicas e Centros Veterinários</span>
+        </div>
+
+        <div class="btn-row">
+          <a href="vet.html" class="btn-secondary">
+            Ver detalhes da solução
+          </a>
+        </div>
+      </article>
+
+      <!-- CARD 3: PRÓXIMO SAAS -->
+      <article class="solution-card">
+        <header>
+          <h3>
+            Próximo SaaS
+            <span class="status planning">EM PLANEJAMENTO</span>
+          </h3>
+          <small>Slot reservado para o próximo sistema em produção</small>
+        </header>
+
+        <div class="card-body">
+          Espaço reservado para o próximo sistema SaaS da Argo Tech Brasil
+          (ex.: gestão de frotas, educação, depósitos de bebidas ou outro nicho).
+          <ul class="details-list">
+            <li>Arquitetura SaaS multi-cidade já testada em ambiente de produção</li>
+            <li>Integração com IA para relatórios e diagnósticos automáticos</li>
+            <li>Painel web responsivo e possibilidade de app mobile no futuro</li>
+          </ul>
+        </div>
+
+        <div class="card-footer">
+          <span class="badge-mini">Status: em desenho técnico</span>
+        </div>
+
+        <div class="btn-row">
+          <a href="saas-sob-medida.html" class="btn-secondary">
+            Desenhar novo SaaS sob medida
+          </a>
+        </div>
+      </article>
+
     </div>
   </section>
 </main>
 
 <footer>
-  © 2025 Argo Tech Brasil — O Veterinário · Sistema de Gestão de Clínicas Veterinárias.
+  © 2025 Argo Tech Brasil — Soluções em IA e sistemas SaaS.
 </footer>
 
 </body>
