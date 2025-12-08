@@ -1,115 +1,137 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SaaS Sob Medida | Argo Tech Brasil</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soluções SaaS – ArgoTech Brasil</title>
 
-  <style>
+<style>
     body {
-      font-family: "Inter", Arial;
-      background: linear-gradient(180deg,#0a0f1c,#091222,#03050b);
-      color: #eef;
-      margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0b1224;
+        color: #e5e7eb;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background: #0f172a;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #00d26a;
+        border-bottom: 1px solid #1e293b;
     }
 
     .container {
-      max-width: 1150px;
-      margin: auto;
-      padding: 40px 20px;
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 10px;
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      margin-bottom: 14px;
-      font-size: .95rem;
+    .descricao {
+        font-size: 16px;
+        margin-bottom: 25px;
+        text-align: center;
+        opacity: .9;
     }
 
-    button {
-      background: #00a868;
-      color: #fff;
-      padding: 12px 22px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
     }
 
-    .result {
-      margin-top: 30px;
-      padding: 18px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 10px;
-      display: none;
+    .card {
+        background: #111827;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid #1e293b;
+        transition: 0.2s;
     }
-  </style>
+    .card:hover {
+        border-color: #00d26a;
+        transform: translateY(-3px);
+    }
+
+    .card h3 {
+        margin-top: 0;
+        color: #00d26a;
+    }
+
+    .card p {
+        font-size: 14px;
+        opacity: .85;
+        min-height: 60px;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #00d26a;
+        padding: 10px 15px;
+        border-radius: 6px;
+        color: #0f172a;
+        font-weight: bold;
+        text-decoration: none;
+        transition: .2s;
+    }
+    .btn:hover {
+        background: #04bb3c;
+    }
+
+    footer {
+        margin-top: 40px;
+        text-align: center;
+        font-size: 13px;
+        opacity: .5;
+        padding: 20px;
+    }
+</style>
+
 </head>
-
 <body>
 
-<header class="navbar">
-  <div class="nav-inner">
-    <div class="nav-left">
-      <img src="logo.png" class="nav-logo"/>
-      <div>
-        <div class="nav-title">Argo Tech Brasil</div>
-        <div class="nav-sub">SaaS · IA · Automação</div>
-      </div>
-    </div>
-
-    <div class="nav-links">
-      <a href="index.html">Início</a>
-      <a href="solucoes.html">Soluções</a>
-      <a href="saas-sob-medida.html">SaaS sob medida</a>
-      <a href="noticias.html">Notícias</a>
-      <a href="https://wa.me/5575982784389" target="_blank" class="nav-whats">🟢 WhatsApp</a>
-    </div>
-  </div>
+<header>
+    Soluções Inteligentes – ArgoTech Brasil
 </header>
 
 <div class="container">
-  <h1>Desenhe seu SaaS sob medida</h1>
-  <p>Descreva sua ideia e nossa inteligência irá gerar:</p>
-  <ul>
-    <li>Descrição do sistema</li>
-    <li>Módulos recomendados</li>
-    <li>Arquitetura sugerida</li>
-    <li>Protótipo visual preliminar</li>
-    <li>Link de orçamento pelo WhatsApp</li>
-  </ul>
 
-  <textarea id="input" rows="6" placeholder="Descreva sua necessidade aqui..."></textarea>
-  <button onclick="generate()">Gerar proposta do SaaS</button>
+    <p class="descricao">
+        Explore nossas soluções SaaS sob demanda desenvolvidas com IA e automação.  
+        Clique em uma solução para visualizar e testar.
+    </p>
 
-  <div class="result" id="output"></div>
+    <div class="cards">
+
+        <!-- CARD 1 — ARGO SAÚDE -->
+        <div class="card">
+            <h3>ArgoSaúde – Gestão Municipal</h3>
+            <p>Sistema integrado de gestão da saúde municipal com módulos para atenção básica, estoque, relatórios, indicadores e governança pública.</p>
+            <a class="btn" href="https://saude-cardeal-q--aurea-argolo.replit.app" target="_blank">Acessar Sistema</a>
+        </div>
+
+        <!-- CARD 2 — MODELO PARA FUTURO SISTEMA -->
+        <div class="card">
+            <h3>⚙️ SaaS sob Medida</h3>
+            <p>Descreva o sistema que deseja e nossa IA projeta automaticamente arquitetura, módulos e telas.</p>
+            <a class="btn" href="saas-sob-medida.html">Gerar Meu SaaS</a>
+        </div>
+
+        <!-- CARD 3 — RESERVADO PARA FUTUROS SAAS -->
+        <div class="card">
+            <h3>🚧 Em Desenvolvimento</h3>
+            <p>Solução corporativa que será publicada em breve. Mantenha-se atento para novidades.</p>
+            <a class="btn" href="#">Brevemente</a>
+        </div>
+
+    </div>
+
 </div>
 
-<script>
-  function generate() {
-    const text = document.getElementById("input").value;
-    const output = document.getElementById("output");
-
-    if (!text.trim()) {
-      alert("Digite sua ideia primeiro.");
-      return;
-    }
-
-    output.style.display = "block";
-    output.innerHTML =
-      "🔄 Gerando proposta com IA... (Fase 1 – Local).<br><br> " +
-      "👉 Quando integrarmos API, isso virará fluxo automático com protótipo visual.";
-  }
-</script>
-
 <footer>
-  <p style="text-align:center; padding:25px; opacity:0.6">
-    © 2025 Argo Tech Brasil
-  </p>
+    © 2025 ArgoTech Brasil – Transformando gestão com automação e inteligência artificial.
 </footer>
 
 </body>
