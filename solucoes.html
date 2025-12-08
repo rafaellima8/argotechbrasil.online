@@ -1,454 +1,113 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Soluções SaaS · Argo Tech Brasil</title>
-
-  <style>
-    /* ESTILOS GERAIS */
-    :root {
-      --bg-main: #020617;
-      --bg-card: #020617;
-      --bg-header: #020617;
-      --accent: #22c55e;
-      --accent-soft: #14532d;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --border-soft: #1f2937;
-      --danger: #f97373;
-      --warning: #facc15;
-      --radius-lg: 16px;
-      --radius-md: 12px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* TOPO / NAVBAR */
-
-    header {
-      background: rgba(2, 6, 23, 0.95);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
-      backdrop-filter: blur(18px);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .nav-container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    .brand strong {
-      color: #e5e7eb;
-      font-size: 15px;
-    }
-
-    .brand img {
-      height: 32px;
-      width: auto;
-      border-radius: 999px;
-    }
-
-    nav {
-      display: flex;
-      gap: 12px;
-      font-size: 14px;
-    }
-
-    nav a {
-      padding: 6px 12px;
-      border-radius: 999px;
-      color: var(--text-muted);
-      transition: 0.18s ease;
-      white-space: nowrap;
-    }
-
-    nav a:hover {
-      background: rgba(15, 23, 42, 0.8);
-      color: #e5e7eb;
-    }
-
-    nav a.active {
-      background: rgba(34, 197, 94, 0.15);
-      color: #bbf7d0;
-      border: 1px solid rgba(34, 197, 94, 0.4);
-    }
-
-    /* CONTEÚDO PRINCIPAL */
-
-    main {
-      flex: 1;
-    }
-
-    .page-hero {
-      max-width: 1120px;
-      margin: 28px auto 0;
-      padding: 0 20px 8px;
-    }
-
-    .page-hero h1 {
-      font-size: 26px;
-      margin-bottom: 6px;
-    }
-
-    .page-hero p {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 620px;
-    }
-
-    .solutions-section {
-      max-width: 1120px;
-      margin: 10px auto 40px;
-      padding: 0 20px 40px;
-    }
-
-    .solutions-grid {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .solution-card {
-      background: radial-gradient(circle at top left, #0b1120 0, #020617 55%);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 18px 18px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
-    }
-
-    .solution-card h3 {
-      font-size: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .solution-card small {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .status {
-      font-size: 11px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-    }
-
-    .status.production {
-      background: rgba(22, 163, 74, 0.18);
-      border-color: rgba(22, 163, 74, 0.7);
-      color: #bbf7d0;
-    }
-
-    .status.planning {
-      background: rgba(59, 130, 246, 0.13);
-      border-color: rgba(59, 130, 246, 0.7);
-      color: #bfdbfe;
-    }
-
-    .card-body {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .details-list {
-      margin-top: 6px;
-      padding-left: 16px;
-      font-size: 13px;
-      color: #d1d5db;
-    }
-
-    .details-list li {
-      margin-bottom: 4px;
-    }
-
-    .card-footer {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .badge-mini {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.12);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-    }
-
-    .btn-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: 0.18s ease;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      border-color: rgba(22, 163, 74, 0.7);
-      color: #022c22;
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.05);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.35);
-    }
-
-    .btn-secondary {
-      background: rgba(15, 23, 42, 0.9);
-      border-color: rgba(55, 65, 81, 0.9);
-      color: #e5e7eb;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(30, 64, 175, 0.55);
-      border-color: rgba(37, 99, 235, 0.9);
-    }
-
-    footer {
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 14px 16px 18px;
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: center;
-      background: #020617;
-    }
-
-    /* RESPONSIVO – CELULAR / TABLET */
-
-    @media (max-width: 960px) {
-      .solutions-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .page-hero h1 {
-        font-size: 22px;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-      }
-
-      .solutions-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .solution-card {
-        padding: 16px 14px 18px;
-      }
-
-      .page-hero {
-        margin-top: 18px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Argo Tech Brasil — Soluções SaaS</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="bg-slate-950 text-slate-200">
 
-<header>
-  <div class="nav-container">
-    <div class="brand">
-      <img src="logo.png" alt="Logo Argo Tech Brasil" />
-      <div>
-        <strong>Argo Tech Brasil</strong><br />
-        <span>IA &amp; Sistemas SaaS para gestão pública e negócios</span>
-      </div>
-    </div>
-
-    <nav>
+<header class="px-6 py-4 border-b border-slate-800">
+  <div class="mx-auto max-w-6xl flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="logo.png" class="h-10" alt="Argo Tech Brasil">
+      <span class="text-lg font-semibold">Argo Tech Brasil</span>
+    </a>
+    <nav class="flex gap-6">
       <a href="index.html">Início</a>
-      <a href="noticias.html">Notícias</a>
-      <a href="solucoes.html" class="active">Soluções</a>
+      <a href="solucoes.html" class="text-emerald-400">Soluções</a>
       <a href="saas-sob-medida.html">SaaS sob Medida</a>
+      <a href="contato.html">Contato</a>
     </nav>
   </div>
 </header>
 
-<main>
-  <section class="page-hero">
-    <h1>Soluções em produção</h1>
-    <p>
-      Aqui ficam os sistemas SaaS já implantados ou prontos para implantação, 
-      com foco em gestão pública municipal e segmentos especializados.
-    </p>
-  </section>
+<main class="mx-auto max-w-6xl px-6 py-12">
 
-  <section class="solutions-section">
-    <div class="solutions-grid">
+<section class="mb-14">
+  <h1 class="text-4xl font-bold text-slate-50">Soluções Inteligentes</h1>
+  <p class="text-lg text-slate-300 mt-2">
+    Sistemas desenvolvidos pela Argo Tech Brasil para gestão pública e negócios.
+  </p>
+</section>
 
-      <!-- CARD 1: ARGO SAÚDE -->
-      <article class="solution-card">
-        <header>
-          <h3>
-            ArgoSaúde
-            <span class="status production">EM PRODUÇÃO</span>
-          </h3>
-          <small>Gestão Municipal de Saúde · v2.0.0</small>
-        </header>
+<section>
+  <div class="grid md:grid-cols-3 gap-8">
 
-        <div class="card-body">
-          Plataforma implantada na Secretaria Municipal de Saúde de Cardeal da Silva – BA,
-          cobrindo unidades, equipes, pacientes, transporte e estoque de insumos.
-          <ul class="details-list">
-            <li>Módulos integrados: pacientes, atendimentos, exames e transporte</li>
-            <li>Relatórios operacionais e painéis para secretarias de saúde</li>
-            <li>Arquitetura multi-município pronta para escalar para novas prefeituras</li>
-          </ul>
-        </div>
+    <!-- ArgoSaude atualizado -->
+    <article class="rounded-2xl bg-slate-900/60 p-6 border border-slate-800 hover:border-emerald-500 transition">
+      <div class="text-xs font-medium text-emerald-400 uppercase mb-2">Saúde Pública</div>
+      <h3 class="text-xl font-semibold text-slate-50">ArgoSaude — Gestão Municipal</h3>
+      <p class="mt-3 text-sm text-slate-300">
+        Sistema para gestão de saúde municipal: pacientes, unidades, farmácia, estoque,
+        transporte e análises gerenciais. Preparado para secretarias municipais.
+      </p>
+      <ul class="mt-4 space-y-1 text-sm text-slate-200">
+        <li>• Cadastro de pacientes e prontuários</li>
+        <li>• Unidades e agenda de profissionais</li>
+        <li>• Controle de medicamentos e insumos</li>
+        <li>• Relatórios gerenciais e integração</li>
+      </ul>
+      <div class="mt-6">
+        <a href="https://argotechbrasil.online/login" target="_blank"
+           class="inline-flex rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400">
+          Acessar ArgoSaude (login)
+        </a>
+      </div>
+    </article>
 
-        <div class="card-footer">
-          <span class="badge-mini">Município atual: Cardeal da Silva – BA</span>
-        </div>
+    <!-- O Veterinário -->
+    <article class="rounded-2xl bg-slate-900/60 p-6 border border-slate-800 hover:border-emerald-500 transition">
+      <div class="text-xs font-medium text-emerald-400 uppercase mb-2">Saúde Animal</div>
+      <h3 class="text-xl font-semibold text-slate-50">O Veterinário — Clínicas</h3>
+      <p class="mt-3 text-sm text-slate-300">
+        Sistema completo para clínicas veterinárias com prontuário eletrônico,
+        estoque, financeio e envio de documentos por WhatsApp.
+      </p>
+      <ul class="mt-4 space-y-1 text-sm text-slate-200">
+        <li>• Agenda, vacinas e retornos</li>
+        <li>• Histórico clínico com anexos</li>
+        <li>• PDV com código de barras</li>
+        <li>• Relatórios clínicos e financeiros</li>
+      </ul>
+      <div class="mt-6">
+        <a href="vet.html" class="inline-flex rounded-full border border-slate-700 px-4 py-2 text-sm font-semibold hover:bg-slate-800">
+          Detalhes do sistema
+        </a>
+      </div>
+    </article>
 
-        <div class="btn-row">
-          <a href="https://saude.argotechbrasil.online" target="_blank" class="btn-primary">
-            Acessar sistema
-          </a>
-        </div>
-      </article>
+    <!-- Novo RABEL Fleet Manager -->
+    <article class="rounded-2xl bg-slate-900/60 p-6 border border-slate-800 hover:border-emerald-500 transition">
+      <div class="text-xs font-medium text-emerald-400 uppercase mb-2">Frotas & Logística</div>
+      <h3 class="text-xl font-semibold text-slate-50">RABEL Fleet Manager — Transporte de Areia e Brita</h3>
+      <p class="mt-3 text-sm text-slate-300">
+        Sistema de gestão de frotas para empresas de transporte de materiais de construção, com controle de veículos,
+        motoristas, cargas, combustível, manutenção e relatórios financeiros.
+      </p>
+      <ul class="mt-4 space-y-1 text-sm text-slate-200">
+        <li>• Operações de carga e entrega</li>
+        <li>• Estoque de materiais</li>
+        <li>• Controle de motoristas e veículos</li>
+        <li>• Alertas inteligentes e relatórios analíticos</li>
+      </ul>
+      <div class="mt-6">
+        <a href="https://RabelEmpreendimentos.replit.app/login" target="_blank"
+           class="inline-flex rounded-full bg-emerald-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-emerald-400">
+          Acessar RABEL Fleet Manager (login)
+        </a>
+      </div>
+    </article>
 
-      <!-- CARD 2: O VETERINÁRIO -->
-      <article class="solution-card">
-        <header>
-          <h3>
-            O Veterinário
-            <span class="status production">MVP PRONTO</span>
-          </h3>
-          <small>Sistema de Gestão de Clínicas Veterinárias</small>
-        </header>
+  </div>
+</section>
 
-        <div class="card-body">
-          SaaS completo para clínicas veterinárias com prontuário, vacinas, agenda,
-          financeiro, estoque e PDV – com visual médico profissional e modo escuro.
-          <ul class="details-list">
-            <li>Cadastro de pacientes (animais) e tutores, com histórico clínico completo</li>
-            <li>Dashboard com métricas em tempo real e alertas inteligentes</li>
-            <li>Importação de dados no padrão SimplesVet e PWA instalável</li>
-          </ul>
-        </div>
-
-        <div class="card-footer">
-          <span class="badge-mini">Segmento: Clínicas e Centros Veterinários</span>
-        </div>
-
-        <div class="btn-row">
-          <a href="vet.html" class="btn-secondary">
-            Ver detalhes da solução
-          </a>
-        </div>
-      </article>
-
-      <!-- CARD 3: PRÓXIMO SAAS -->
-      <article class="solution-card">
-        <header>
-          <h3>
-            Próximo SaaS
-            <span class="status planning">EM PLANEJAMENTO</span>
-          </h3>
-          <small>Slot reservado para o próximo sistema em produção</small>
-        </header>
-
-        <div class="card-body">
-          Espaço reservado para o próximo sistema SaaS da Argo Tech Brasil
-          (ex.: gestão de frotas, educação, depósitos de bebidas ou outro nicho).
-          <ul class="details-list">
-            <li>Arquitetura SaaS multi-cidade já testada em ambiente de produção</li>
-            <li>Integração com IA para relatórios e diagnósticos automáticos</li>
-            <li>Painel web responsivo e possibilidade de app mobile no futuro</li>
-          </ul>
-        </div>
-
-        <div class="card-footer">
-          <span class="badge-mini">Status: em desenho técnico</span>
-        </div>
-
-        <div class="btn-row">
-          <a href="saas-sob-medida.html" class="btn-secondary">
-            Desenhar novo SaaS sob medida
-          </a>
-        </div>
-      </article>
-
-    </div>
-  </section>
 </main>
 
-<footer>
-  © 2025 Argo Tech Brasil — Soluções em IA e sistemas SaaS.
+<footer class="px-6 py-6 border-t border-slate-800 text-center text-xs text-slate-500">
+  © 2025 Argo Tech Brasil — Soluções SaaS para Gestão Pública e Negócios.
 </footer>
 
 </body>
